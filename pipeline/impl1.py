@@ -4,7 +4,7 @@ from typing import List
 
 from guidance.detector import ObjectDetector
 from guidance.representation import RepresentationExtractor
-from config import DEVICE, MAX_NEW_TOKENS
+from config import DEVICE, MAX_NEW_TOKENS, ALPHA
 
 
 class Pipeline1:
@@ -50,11 +50,34 @@ class Pipeline1:
 
         # ── Step 4: prepare inputs for LLaVA ───────────────────────────
         # LLaVA expects a specific prompt format
-        prompt = f"USER: <image>\n{text} ASSISTANT:"
+        # ── Step 4: prepare inputs for Qwen2-VL ───────────────────────
+        print (ALPHA)
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "image": image,
+                    },
+                    {
+                        "type": "text",
+                        "text": text,
+                    },
+                ],
+            }
+        ]
+
+        formatted_text = self.processor.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True
+        )
 
         inputs = self.processor(
-            text=prompt,
-            images=image,
+            text=[formatted_text],
+            images=[image],
+            padding=True,
             return_tensors="pt"
         ).to(DEVICE)
 
@@ -63,16 +86,16 @@ class Pipeline1:
             output_ids = self.model.generate(
                 **inputs,
                 max_new_tokens=MAX_NEW_TOKENS,
-                do_sample=False   # greedy for reproducibility
+                do_sample=False,
+                temperature=0.0
             )
 
-        # decode only the newly generated tokens
-        input_len = inputs["input_ids"].shape[1]
-        generated_ids = output_ids[:, input_len:]
-        answer = self.tokenizer.decode(
-            generated_ids[0],
+        generated_text = self.processor.batch_decode(
+            output_ids,
             skip_special_tokens=True
-        )
+        )[0]
+
+        answer = generated_text
 
         # ── Step 6: reset LM head for next image ────────────────────────
         self.model.lm_head.reset()
