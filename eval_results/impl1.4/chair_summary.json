@@ -1,0 +1,38 @@
+{
+  "0.0": {
+    "chair_s": 10.85,
+    "chair_i": 27.78,
+    "recall": 53.06,
+    "total_captions": 23,
+    "total_sentences": 387,
+    "total_mentioned": 72,
+    "total_hallucinated": 20
+  },
+  "0.1": {
+    "chair_s": 14.55,
+    "chair_i": 34.12,
+    "recall": 57.14,
+    "total_captions": 23,
+    "total_sentences": 385,
+    "total_mentioned": 85,
+    "total_hallucinated": 29
+  },
+  "0.5": {
+    "chair_s": 12.44,
+    "chair_i": 29.63,
+    "recall": 58.16,
+    "total_captions": 23,
+    "total_sentences": 394,
+    "total_mentioned": 81,
+    "total_hallucinated": 24
+  },
+  "1.0": {
+    "chair_s": 13.68,
+    "chair_i": 31.25,
+    "recall": 67.35,
+    "total_captions": 23,
+    "total_sentences": 402,
+    "total_mentioned": 96,
+    "total_hallucinated": 30
+  }
+}

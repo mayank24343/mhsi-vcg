@@ -11,8 +11,8 @@ from config import DEVICE, MAX_NEW_TOKENS
 class Pipeline2:
     """
     Implementation 2:
-    (Objects from DETR ∩ RAM++) + (Captions from BLIP)
-    → combined representations → SVD → modified LM head → generate
+    (Objects from DETR) + (Captions from BLIP)
+    -> combined representations -> SVD -> modified LM head -> generate
     """
 
     def __init__(self, model, tokenizer, processor):
@@ -20,7 +20,7 @@ class Pipeline2:
         self.tokenizer = tokenizer
         self.processor = processor
         self.detector = ObjectDetector()
-        self.captioner = ImageCaptioner(use_blip2=False)
+        self.captioner = ImageCaptioner()
         self.extractor = RepresentationExtractor(model, tokenizer)
 
     def generate(self, text: str, image: Image.Image) -> str:
@@ -34,57 +34,78 @@ class Pipeline2:
         """
         print("\n[Pipeline2] Starting generation...")
 
-        # ── Step 1: detect objects ──────────────────────────────────────
+        # detection, m objects
         detected_objects = self.detector.detect(image)
 
-        # ── Step 2: generate captions ───────────────────────────────────
-        captions = self.captioner.caption(image, num_captions=3)
+        # captioning, k captions
+        captions = self.captioner.caption(image)
 
-        # ── Step 3: combine all texts ───────────────────────────────────
+        # m + k total
         all_texts = detected_objects + captions
-        # e.g. ["person", "chair", "laptop", "a man sitting at a desk", ...]
 
         print(f"[Pipeline2] Total texts for representation: {len(all_texts)}")
         print(f"  Objects ({len(detected_objects)}): {detected_objects}")
         print(f"  Captions ({len(captions)}): {captions}")
 
-        # ── Step 4: build (M+Q) × d representation matrix ──────────────
+        # M + k x d matrix
         if all_texts:
             rep_matrix = self.extractor.build_representation_matrix(all_texts)
-            # (M+Q) × d
         else:
             rep_matrix = None
 
-        # ── Step 5: precompute SVD ──────────────────────────────────────
+        # set matrix for this iteration
         if rep_matrix is not None:
-            self.model.language_model.lm_head.precompute(rep_matrix)
+            self.model.lm_head.precompute(rep_matrix)
 
-        # ── Step 6: prepare inputs ──────────────────────────────────────
-        prompt = f"USER: <image>\n{text} ASSISTANT:"
+        # input template for qwen
+        #print (ALPHA)
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "image",
+                        "image": image,
+                    },
+                    {
+                        "type": "text",
+                        "text": text,
+                    },
+                ],
+            }
+        ]
+
+        formatted_text = self.processor.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True
+        )
 
         inputs = self.processor(
-            text=prompt,
-            images=image,
+            text=[formatted_text],
+            images=[image],
+            padding=True,
             return_tensors="pt"
         ).to(DEVICE)
 
-        # ── Step 7: generate ────────────────────────────────────────────
+        # generate output
         with torch.no_grad():
             output_ids = self.model.generate(
                 **inputs,
                 max_new_tokens=MAX_NEW_TOKENS,
-                do_sample=False
+                do_sample=False,
+                temperature=0.0
             )
 
-        input_len = inputs["input_ids"].shape[1]
-        generated_ids = output_ids[:, input_len:]
-        answer = self.tokenizer.decode(
-            generated_ids[0],
+        generated_text = self.processor.batch_decode(
+            output_ids,
             skip_special_tokens=True
-        )
+        )[0]
 
-        # ── Step 8: reset ───────────────────────────────────────────────
-        self.model.language_model.lm_head.reset()
+        answer = generated_text
+
+        # reset for next image
+        self.model.lm_head.reset()
 
         print(f"[Pipeline2] Answer: {answer}")
         return answer

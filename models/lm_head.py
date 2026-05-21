@@ -8,35 +8,34 @@ class SVDGuidedLMHead(nn.Module):
         """
         Wraps the original LM head.
         Before projecting to vocab, modifies hidden state u as:
-            u_new = u + alpha * VVᵀu
+        u' = u + alpha * VVT u
         where V comes from SVD of the object/caption representation matrix.
 
         Args:
             original_lm_head: the nn.Linear lm_head from the LLM
             alpha: amplification strength
-            top_k: how many singular vectors to keep. None = keep all
+            top_k: how many singular vectors to keep (None = keep all)
         """
         super().__init__()
         self.original_lm_head = original_lm_head
         self.alpha = alpha
         self.top_k = top_k
-        self.VVT = None   # d × d projection matrix, set by precompute()
         self.V = None 
 
     def precompute(self, representation_matrix: torch.Tensor):
         """
         Args:
-            representation_matrix: M x d tensor
-                                   M = number of objects (or objects + captions)
-                                   d = LLM hidden dimension (4096 for 7B)
+            representation_matrix: M + k x d tensor
+                                   M + k = number of objects (m) + captions (k)
+                                   d = LLM hidden dimension
         """
         X = representation_matrix.float()
 
-        # normalize rows so no single object dominates
-        X = F.normalize(X, dim=-1)
+        # normalize rows so no single object dominates, see toxic paper 
+        X = F.normalize(X, dim=-1) #l2 norm 
 
-        # SVD: X = U S Vᵀ
-        # Vh shape: k × d  (torch returns Vᵀ)
+        # SVD: X = U S VT
+        # Vh shape: k × d  (torch returns VT)
         U, S, Vh = torch.linalg.svd(X, full_matrices=False)
 
         # optionally keep only top-k singular vectors
@@ -45,9 +44,9 @@ class SVDGuidedLMHead(nn.Module):
 
         # V: d × k
         self.V = Vh.T
-        self.V, _ = torch.linalg.qr(self.V)
+        self.V, _ = torch.linalg.qr(self.V) # orthogonal projector, look more into this, paper mentions orthogonal projection
 
-        # projection matrix VVᵀ: d × d
+        # projection matrix VVT: d × d
         #device = next(self.original_lm_head.parameters()).device
         #self.VVT = (V @ V.T).to(device).half()   # half() to match model dtype
 
@@ -56,8 +55,7 @@ class SVDGuidedLMHead(nn.Module):
               #f"Singular vectors kept: {V.shape[1]}")
 
     def reset(self):
-        """Call between images."""
-        self.VVT = None
+        """Call between images to reset."""
         self.V = None
 
     def forward(self, hidden_states: torch.Tensor):
@@ -77,6 +75,8 @@ class SVDGuidedLMHead(nn.Module):
 
             # hidden_states: B x T x d
             # V: d x k
+            #print("before modification")
+            #print(hidden_states.shape)
 
             coeffs = hidden_states @ V          # B x T x k
 
@@ -86,5 +86,7 @@ class SVDGuidedLMHead(nn.Module):
                 hidden_states
                 + self.alpha * amplification
             )
+            #print("after modification")
+            #print(hidden_states.shape)
 
         return self.original_lm_head(hidden_states)

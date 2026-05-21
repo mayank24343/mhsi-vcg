@@ -1,14 +1,14 @@
 # large vision language model used
-LVLM_MODEL_NAME = "llava-hf/llava-1.5-7b-hf"
+LVLM_MODEL_NAME = "Qwen/Qwen2-VL-2B-Instruct"
 
 # guidance hyperparameters
-ALPHA = 1.0                  # amplification strength
-DETR_THRESHOLD = 0.2       # confidence threshold for DETR
+ALPHA = 1    # amplification strength
+DETR_THRESHOLD = 0.5       # confidence threshold for DETR
 RAM_THRESHOLD = 0.68         # confidence threshold for RAM++
-TOP_SVD_COMPONENTS = None    # None = keep all, int = keep top-k
+TOP_SVD_COMPONENTS = 5    # None = keep all, int = keep top-k
 
 # generation
-MAX_NEW_TOKENS = 200
+MAX_NEW_TOKENS = 500
 
 # device
 DEVICE = "cuda"

@@ -8,7 +8,7 @@ from config import DETR_THRESHOLD, RAM_THRESHOLD, DEVICE
 from ram.models import ram_plus
 from ram import inference_ram, get_transform
 
-
+# neat trick borrowed from marine, labels here have same indices as the return indices given by DETR
 COCO_CLASSES = [
     'N/A', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
     'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'N/A',
@@ -29,7 +29,7 @@ COCO_CLASSES = [
 
 class ObjectDetector:
     """
-    Runs DETR and RAM++ on an image and returns the
+    Runs DETR and RAM++ (not right now) on an image and returns the
     intersection of their detected object class names.
     """
 
@@ -37,12 +37,14 @@ class ObjectDetector:
         print("[ObjectDetector] Loading DETR...")
         self.detr_processor = DetrImageProcessor.from_pretrained(
             "facebook/detr-resnet-50"
-        )
+        ) 
         self.detr_model = DetrForObjectDetection.from_pretrained(
             "facebook/detr-resnet-50"
-        ).cpu()
-        self.detr_model.eval()
+        ).cpu() # running on cpu to have gpu for qwen
+        self.detr_model.eval() # we do this when we actually want to run the model and not train it 
+        # some weights are randomly dropped out during training, we don;t want that during inference - look more into this 
 
+        # uncomment this to get ram++
         """
         print("[ObjectDetector] Loading RAM++...")
         #need to install ram thru github 
@@ -57,7 +59,7 @@ class ObjectDetector:
 
         print("[ObjectDetector] DETR model loaded.")
 
-    @torch.no_grad()
+    @torch.no_grad() #important because we don't want pytorch to track operations (it automatically does for gradient computation, but that wastes compute because we are not going to take gradient)
     def detect_detr(self, image: Image.Image) -> set:
         """
         Run DETR on image.
@@ -66,18 +68,17 @@ class ObjectDetector:
         inputs = self.detr_processor(
             images=image,
             return_tensors="pt"
-        )
+        ) # preprocess image for model, return us pytorch tensors
 
-        outputs = self.detr_model(**inputs)
+        outputs = self.detr_model(**inputs) #inputs is a dictionary with arg: value, unpack that dictionary here
 
         # post process to get boxes and labels
-        target_sizes = torch.tensor([image.size[::-1]])
+        target_sizes = torch.tensor([image.size[::-1]]) # h, w not w, h
         results = self.detr_processor.post_process_object_detection(
             outputs,
             target_sizes=target_sizes,
             threshold=DETR_THRESHOLD
-        )[0]
-        print(results)
+        )[0] # DETR doesn't output classes directly
 
         detected = set()
         for label in results["labels"]:
@@ -88,6 +89,7 @@ class ObjectDetector:
         print(f"[DETR] Detected: {detected}")
         return detected
 
+    # left for now, refer to xinyu
     @torch.no_grad()
     def detect_ram(self, image: Image.Image) -> set:
         """
@@ -99,8 +101,7 @@ class ObjectDetector:
 
         tags, _ = inference_ram(image_tensor, self.ram_model)
 
-        # RAM returns pipe-separated tags sometimes
-        # normalize both comma and pipe separation
+        # RAM returns pipe-separated tags sometimes normalize both comma and pipe separation
         raw_tags = tags[0]
 
         detected = set()
@@ -113,6 +114,7 @@ class ObjectDetector:
         print(f"[RAM++] Detected: {detected}")
 
         return detected
+    
     def detect(self, image: Image.Image) -> list:
         """
         Run both models and return intersection.
@@ -126,7 +128,6 @@ class ObjectDetector:
 
         # fallback: if intersection is empty use DETR alone
         if not intersection:
-            print("[ObjectDetector] Intersection empty, falling back to DETR only.")
             intersection = detr_classes
 
         result = list(intersection)

@@ -11,62 +11,51 @@ from config import DEVICE
 
 class ImageCaptioner:
     """
-    Generates captions for an image using BLIP / BLIP-2.
+    Generates captions for an image using BLIP. 
     Used in Implementation 2 to augment the representation matrix.
     """
 
-    def __init__(self, use_blip2=False):
-        if use_blip2:
-            print("[Captioner] Loading BLIP-2...")
-            self.processor = Blip2Processor.from_pretrained(
-                "Salesforce/blip2-opt-2.7b"
-            )
-            self.model = Blip2ForConditionalGeneration.from_pretrained(
-                "Salesforce/blip2-opt-2.7b",
-                torch_dtype=torch.float16
-            ).to(DEVICE)
-        else:
-            print("[Captioner] Loading BLIP...")
-            self.processor = BlipProcessor.from_pretrained(
-                "Salesforce/blip-image-captioning-base"
-            )
-            self.model = BlipForConditionalGeneration.from_pretrained(
-                "Salesforce/blip-image-captioning-base"
-            ).to(DEVICE)
+    def __init__(self):
+    
+        print("[Captioner] Loading BLIP...")
+        self.processor2 = BlipProcessor.from_pretrained(
+            "Salesforce/blip-image-captioning-base"
+        )
+        self.model2 = BlipForConditionalGeneration.from_pretrained(
+            "Salesforce/blip-image-captioning-base"
+        ).to(DEVICE)
 
-        self.model.eval()
+        self.model2.eval()
         print("[Captioner] Loaded.")
 
+        # blip 2 used to live here as model1 processor1, sadly it was too big for this device to run
+
     @torch.no_grad()
-    def caption(self, image: Image.Image, num_captions: int = 3) -> list:
+    def caption(self, image: Image.Image) -> list:
         """
-        Generate multiple diverse captions for the image.
+        Generate multiple captions for the image but currently only one.
 
         Args:
             image: PIL image
-            num_captions: how many captions to generate
 
         Returns:
             list of caption strings
         """
-        inputs = self.processor(
+
+        inputs2 = self.processor2(
             images=image,
             return_tensors="pt"
         ).to(DEVICE)
 
         # generate multiple captions with sampling for diversity
-        outputs = self.model.generate(
-            **inputs,
-            num_return_sequences=num_captions,
-            do_sample=True,
-            top_p=0.9,
-            max_new_tokens=50
+        outputs2 = self.model2.generate(
+            **inputs2,
+            do_sample=False, #greedy so reproducible
+            max_new_tokens=50 #caption max length
         )
 
-        captions = [
-            self.processor.decode(o, skip_special_tokens=True)
-            for o in outputs
-        ]
+        
+        captions = [ self.processor2.decode(o, skip_special_tokens=True) for o in outputs2]
 
         print(f"[Captioner] Captions: {captions}")
         return captions

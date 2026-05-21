@@ -1,0 +1,1382 @@
+[
+  {
+    "image_id": "447169",
+    "image_file": "000000447169.jpg",
+    "object": "bottle",
+    "question": "Is there a bottle in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bottle in the image?\nassistant\nThere is no existence of any bottles in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "447169",
+    "image_file": "000000447169.jpg",
+    "object": "oven",
+    "question": "Is there an oven in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there an oven in the image?\nassistant\nYes, there is an oven in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "447169",
+    "image_file": "000000447169.jpg",
+    "object": "clock",
+    "question": "Is there a clock in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a clock in the image?\nassistant\nYes, there is a clock visible in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "447169",
+    "image_file": "000000447169.jpg",
+    "object": "snowboard",
+    "question": "Is there a snowboard in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a snowboard in the image?\nassistant\nThere is no existence of a snowboard in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "447169",
+    "image_file": "000000447169.jpg",
+    "object": "suitcase",
+    "question": "Is there a suitcase in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a suitcase in the image?\nassistant\nThere is no existence of a suitcase in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "447169",
+    "image_file": "000000447169.jpg",
+    "object": "horse",
+    "question": "Is there a horse in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a horse in the image?\nassistant\nThere is no existence of a horse in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "169996",
+    "image_file": "000000169996.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nThere is a person riding a bicycle in the image.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "169996",
+    "image_file": "000000169996.jpg",
+    "object": "car",
+    "question": "Is there a car in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a car in the image?\nassistant\nYes, there is a car in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "169996",
+    "image_file": "000000169996.jpg",
+    "object": "truck",
+    "question": "Is there a truck in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a truck in the image?\nassistant\nYes, there is a truck in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "169996",
+    "image_file": "000000169996.jpg",
+    "object": "bed",
+    "question": "Is there a bed in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bed in the image?\nassistant\nThere is no existence of a bed in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "169996",
+    "image_file": "000000169996.jpg",
+    "object": "boat",
+    "question": "Is there a boat in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a boat in the image?\nassistant\nThere is no existence of any boat in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "169996",
+    "image_file": "000000169996.jpg",
+    "object": "train",
+    "question": "Is there a train in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a train in the image?\nassistant\nThere is no existence of a train in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "165681",
+    "image_file": "000000165681.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nThere is no existence of any person in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "165681",
+    "image_file": "000000165681.jpg",
+    "object": "motorcycle",
+    "question": "Is there a motorcycle in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a motorcycle in the image?\nassistant\nThere are several motorcycles visible in the image.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "165681",
+    "image_file": "000000165681.jpg",
+    "object": "car",
+    "question": "Is there a car in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a car in the image?\nassistant\nThere is no existence of a car in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "165681",
+    "image_file": "000000165681.jpg",
+    "object": "oven",
+    "question": "Is there an oven in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there an oven in the image?\nassistant\nThere is no existence of an oven in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "165681",
+    "image_file": "000000165681.jpg",
+    "object": "train",
+    "question": "Is there a train in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a train in the image?\nassistant\nThere is no existence of a train in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "165681",
+    "image_file": "000000165681.jpg",
+    "object": "scissors",
+    "question": "Is there a scissors in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a scissors in the image?\nassistant\nThere is no existence of scissors in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "194832",
+    "image_file": "000000194832.jpg",
+    "object": "bus",
+    "question": "Is there a bus in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bus in the image?\nassistant\nYes, there is a bus in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "194832",
+    "image_file": "000000194832.jpg",
+    "object": "tv",
+    "question": "Is there a tv in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a tv in the image?\nassistant\nYes, there is a television screen visible in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "194832",
+    "image_file": "000000194832.jpg",
+    "object": "chair",
+    "question": "Is there a chair in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a chair in the image?\nassistant\nThere is no existence of any chairs in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "194832",
+    "image_file": "000000194832.jpg",
+    "object": "frisbee",
+    "question": "Is there a frisbee in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a frisbee in the image?\nassistant\nThere is no existence of a frisbee in the image.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "194832",
+    "image_file": "000000194832.jpg",
+    "object": "dining table",
+    "question": "Is there a dining table in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a dining table in the image?\nassistant\nThere is no existence of a dining table in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "194832",
+    "image_file": "000000194832.jpg",
+    "object": "toothbrush",
+    "question": "Is there a toothbrush in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a toothbrush in the image?\nassistant\nThere is no existence of a toothbrush in the image.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "334371",
+    "image_file": "000000334371.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there is a person standing on the sidewalk near the buses.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "334371",
+    "image_file": "000000334371.jpg",
+    "object": "bus",
+    "question": "Is there a bus in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bus in the image?\nassistant\nYes, there are buses in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "334371",
+    "image_file": "000000334371.jpg",
+    "object": "traffic light",
+    "question": "Is there a traffic light in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a traffic light in the image?\nassistant\nYes, there is a traffic light in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "334371",
+    "image_file": "000000334371.jpg",
+    "object": "potted plant",
+    "question": "Is there a potted plant in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a potted plant in the image?\nassistant\nThere is no existence of any potted plant in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "334371",
+    "image_file": "000000334371.jpg",
+    "object": "apple",
+    "question": "Is there an apple in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there an apple in the image?\nassistant\nThere is no existence of any fruit or apple in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "334371",
+    "image_file": "000000334371.jpg",
+    "object": "bottle",
+    "question": "Is there a bottle in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bottle in the image?\nassistant\nThere is no existence of any bottles in the image descriptions.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "572462",
+    "image_file": "000000572462.jpg",
+    "object": "train",
+    "question": "Is there a train in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a train in the image?\nassistant\nYes, there is a train visible in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "572462",
+    "image_file": "000000572462.jpg",
+    "object": "bottle",
+    "question": "Is there a bottle in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bottle in the image?\nassistant\nThere is no existence of a bottle in any of the captions provided.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "572462",
+    "image_file": "000000572462.jpg",
+    "object": "bench",
+    "question": "Is there a bench in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bench in the image?\nassistant\nThere is no existence of a bench in any of the captions provided.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "572462",
+    "image_file": "000000572462.jpg",
+    "object": "dog",
+    "question": "Is there a dog in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a dog in the image?\nassistant\nThere is no existence of a dog in any of the captions provided.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "572462",
+    "image_file": "000000572462.jpg",
+    "object": "bird",
+    "question": "Is there a bird in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bird in the image?\nassistant\nThere is no existence of a bird in any of the captions provided.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "572462",
+    "image_file": "000000572462.jpg",
+    "object": "donut",
+    "question": "Is there a donut in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a donut in the image?\nassistant\nThere is no existence of a donut in any of the captions provided.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "213605",
+    "image_file": "000000213605.jpg",
+    "object": "bus",
+    "question": "Is there a bus in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bus in the image?\nassistant\nYes, there is a bus in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "213605",
+    "image_file": "000000213605.jpg",
+    "object": "car",
+    "question": "Is there a car in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a car in the image?\nassistant\nYes, there is a car in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "213605",
+    "image_file": "000000213605.jpg",
+    "object": "motorcycle",
+    "question": "Is there a motorcycle in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a motorcycle in the image?\nassistant\nThere is no existence of a motorcycle in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "213605",
+    "image_file": "000000213605.jpg",
+    "object": "surfboard",
+    "question": "Is there a surfboard in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a surfboard in the image?\nassistant\nThere is no existence of a surfboard in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "213605",
+    "image_file": "000000213605.jpg",
+    "object": "traffic light",
+    "question": "Is there a traffic light in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a traffic light in the image?\nassistant\nThere is no existence of a traffic light in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "213605",
+    "image_file": "000000213605.jpg",
+    "object": "tv",
+    "question": "Is there a tv in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a tv in the image?\nassistant\nThere is no existence of a television in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "523241",
+    "image_file": "000000523241.jpg",
+    "object": "traffic light",
+    "question": "Is there a traffic light in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a traffic light in the image?\nassistant\nThere is no existence of a traffic light in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "523241",
+    "image_file": "000000523241.jpg",
+    "object": "truck",
+    "question": "Is there a truck in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a truck in the image?\nassistant\nThere is no existence of a truck in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "523241",
+    "image_file": "000000523241.jpg",
+    "object": "car",
+    "question": "Is there a car in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a car in the image?\nassistant\nThere is no existence of any cars in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "523241",
+    "image_file": "000000523241.jpg",
+    "object": "bench",
+    "question": "Is there a bench in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bench in the image?\nassistant\nThere is no existence of a bench in the image descriptions.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "523241",
+    "image_file": "000000523241.jpg",
+    "object": "book",
+    "question": "Is there a book in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a book in the image?\nassistant\nThere is no existence of any book in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "523241",
+    "image_file": "000000523241.jpg",
+    "object": "wine glass",
+    "question": "Is there a wine glass in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a wine glass in the image?\nassistant\nThere is no existence of any wine glass in the image descriptions.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "417779",
+    "image_file": "000000417779.jpg",
+    "object": "car",
+    "question": "Is there a car in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a car in the image?\nassistant\nYes, there is a car parked on the street in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "417779",
+    "image_file": "000000417779.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nThere is no existence of any person in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "417779",
+    "image_file": "000000417779.jpg",
+    "object": "fire hydrant",
+    "question": "Is there a fire hydrant in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a fire hydrant in the image?\nassistant\nYes, there is a fire hydrant in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "417779",
+    "image_file": "000000417779.jpg",
+    "object": "parking meter",
+    "question": "Is there a parking meter in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a parking meter in the image?\nassistant\nThere is no existence of a parking meter in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "417779",
+    "image_file": "000000417779.jpg",
+    "object": "truck",
+    "question": "Is there a truck in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a truck in the image?\nassistant\nThere is no existence of a truck in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "417779",
+    "image_file": "000000417779.jpg",
+    "object": "kite",
+    "question": "Is there a kite in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a kite in the image?\nassistant\nThere is no existence of a kite in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "260261",
+    "image_file": "000000260261.jpg",
+    "object": "knife",
+    "question": "Is there a knife in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a knife in the image?\nassistant\nThere is no existence of a knife in the image.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "260261",
+    "image_file": "000000260261.jpg",
+    "object": "truck",
+    "question": "Is there a truck in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a truck in the image?\nassistant\nYes, there is a truck in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "260261",
+    "image_file": "000000260261.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there is a person in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "260261",
+    "image_file": "000000260261.jpg",
+    "object": "bird",
+    "question": "Is there a bird in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bird in the image?\nassistant\nThere is no existence of any bird in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "260261",
+    "image_file": "000000260261.jpg",
+    "object": "carrot",
+    "question": "Is there a carrot in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a carrot in the image?\nassistant\nThere is no existence of carrots in the image information.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "260261",
+    "image_file": "000000260261.jpg",
+    "object": "surfboard",
+    "question": "Is there a surfboard in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a surfboard in the image?\nassistant\nThere is no existence of a surfboard in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "281929",
+    "image_file": "000000281929.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there is a person in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "281929",
+    "image_file": "000000281929.jpg",
+    "object": "tie",
+    "question": "Is there a tie in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a tie in the image?\nassistant\nYes, there is a tie in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "281929",
+    "image_file": "000000281929.jpg",
+    "object": "bicycle",
+    "question": "Is there a bicycle in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bicycle in the image?\nassistant\nYes, there is a bicycle in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "281929",
+    "image_file": "000000281929.jpg",
+    "object": "broccoli",
+    "question": "Is there a broccoli in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a broccoli in the image?\nassistant\nThere is no existence of broccoli in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "281929",
+    "image_file": "000000281929.jpg",
+    "object": "sandwich",
+    "question": "Is there a sandwich in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a sandwich in the image?\nassistant\nThere is no existence of a sandwich in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "281929",
+    "image_file": "000000281929.jpg",
+    "object": "frisbee",
+    "question": "Is there a frisbee in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a frisbee in the image?\nassistant\nThere is no existence of a frisbee in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "283412",
+    "image_file": "000000283412.jpg",
+    "object": "bed",
+    "question": "Is there a bed in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bed in the image?\nassistant\nThere is no existence of a bed in the image.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "283412",
+    "image_file": "000000283412.jpg",
+    "object": "cup",
+    "question": "Is there a cup in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a cup in the image?\nassistant\nYes, there is a cup in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "283412",
+    "image_file": "000000283412.jpg",
+    "object": "dog",
+    "question": "Is there a dog in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a dog in the image?\nassistant\nYes, there is a dog in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "283412",
+    "image_file": "000000283412.jpg",
+    "object": "zebra",
+    "question": "Is there a zebra in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a zebra in the image?\nassistant\nThere is no existence of a zebra in the image.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "283412",
+    "image_file": "000000283412.jpg",
+    "object": "sink",
+    "question": "Is there a sink in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a sink in the image?\nassistant\nThere is no existence of a sink in the image.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "283412",
+    "image_file": "000000283412.jpg",
+    "object": "sports ball",
+    "question": "Is there a sports ball in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a sports ball in the image?\nassistant\nThere is no existence of a sports ball in the image.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "357459",
+    "image_file": "000000357459.jpg",
+    "object": "dog",
+    "question": "Is there a dog in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a dog in the image?\nassistant\nYes, there is a dog in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "357459",
+    "image_file": "000000357459.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there is a person in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "357459",
+    "image_file": "000000357459.jpg",
+    "object": "frisbee",
+    "question": "Is there a frisbee in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a frisbee in the image?\nassistant\nYes, there is a green frisbee in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "357459",
+    "image_file": "000000357459.jpg",
+    "object": "surfboard",
+    "question": "Is there a surfboard in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a surfboard in the image?\nassistant\nThere is no existence of a surfboard in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "357459",
+    "image_file": "000000357459.jpg",
+    "object": "clock",
+    "question": "Is there a clock in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a clock in the image?\nassistant\nThere is no existence of a clock in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "357459",
+    "image_file": "000000357459.jpg",
+    "object": "snowboard",
+    "question": "Is there a snowboard in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a snowboard in the image?\nassistant\nThere is no existence of a snowboard in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "193181",
+    "image_file": "000000193181.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there are several people visible in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "193181",
+    "image_file": "000000193181.jpg",
+    "object": "baseball glove",
+    "question": "Is there a baseball glove in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a baseball glove in the image?\nassistant\nYes, there is a baseball glove visible in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "193181",
+    "image_file": "000000193181.jpg",
+    "object": "baseball bat",
+    "question": "Is there a baseball bat in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a baseball bat in the image?\nassistant\nYes, there is a baseball bat in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "193181",
+    "image_file": "000000193181.jpg",
+    "object": "skis",
+    "question": "Is there a skis in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a skis in the image?\nassistant\nThere is no existence of skis in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "193181",
+    "image_file": "000000193181.jpg",
+    "object": "bus",
+    "question": "Is there a bus in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bus in the image?\nassistant\nThere is no existence of a bus in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "193181",
+    "image_file": "000000193181.jpg",
+    "object": "knife",
+    "question": "Is there a knife in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a knife in the image?\nassistant\nThere is no existence of any knife in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "579635",
+    "image_file": "000000579635.jpg",
+    "object": "boat",
+    "question": "Is there a boat in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a boat in the image?\nassistant\nThere is a boat in the image.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "579635",
+    "image_file": "000000579635.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there is a person in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "579635",
+    "image_file": "000000579635.jpg",
+    "object": "surfboard",
+    "question": "Is there a surfboard in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a surfboard in the image?\nassistant\nYes, there is a surfboard in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "579635",
+    "image_file": "000000579635.jpg",
+    "object": "frisbee",
+    "question": "Is there a frisbee in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a frisbee in the image?\nassistant\nThere is no existence of a frisbee in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "579635",
+    "image_file": "000000579635.jpg",
+    "object": "vase",
+    "question": "Is there a vase in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a vase in the image?\nassistant\nThere is no existence of a vase in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "579635",
+    "image_file": "000000579635.jpg",
+    "object": "knife",
+    "question": "Is there a knife in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a knife in the image?\nassistant\nThere is no existence of a knife in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "567640",
+    "image_file": "000000567640.jpg",
+    "object": "car",
+    "question": "Is there a car in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a car in the image?\nassistant\nYes, there is a car visible in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "567640",
+    "image_file": "000000567640.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there are several people in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "567640",
+    "image_file": "000000567640.jpg",
+    "object": "sports ball",
+    "question": "Is there a sports ball in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a sports ball in the image?\nassistant\nYes, there is a sports ball in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "567640",
+    "image_file": "000000567640.jpg",
+    "object": "donut",
+    "question": "Is there a donut in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a donut in the image?\nassistant\nThere is no existence of any donuts in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "567640",
+    "image_file": "000000567640.jpg",
+    "object": "tv",
+    "question": "Is there a tv in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a tv in the image?\nassistant\nThere is no existence of a television in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "567640",
+    "image_file": "000000567640.jpg",
+    "object": "bear",
+    "question": "Is there a bear in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bear in the image?\nassistant\nThere is no existence of any animal, especially a bear, in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "256518",
+    "image_file": "000000256518.jpg",
+    "object": "dining table",
+    "question": "Is there a dining table in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a dining table in the image?\nassistant\nYes, there is a dining table in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "256518",
+    "image_file": "000000256518.jpg",
+    "object": "bowl",
+    "question": "Is there a bowl in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bowl in the image?\nassistant\nThere is no existence of a bowl in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "256518",
+    "image_file": "000000256518.jpg",
+    "object": "sandwich",
+    "question": "Is there a sandwich in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a sandwich in the image?\nassistant\nThere is no existence of a sandwich in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "256518",
+    "image_file": "000000256518.jpg",
+    "object": "scissors",
+    "question": "Is there a scissors in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a scissors in the image?\nassistant\nThere is no existence of scissors in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "256518",
+    "image_file": "000000256518.jpg",
+    "object": "book",
+    "question": "Is there a book in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a book in the image?\nassistant\nThere is no existence of a book in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "256518",
+    "image_file": "000000256518.jpg",
+    "object": "kite",
+    "question": "Is there a kite in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a kite in the image?\nassistant\nThere is no existence of a kite in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "144984",
+    "image_file": "000000144984.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there is a person in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "144984",
+    "image_file": "000000144984.jpg",
+    "object": "couch",
+    "question": "Is there a couch in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a couch in the image?\nassistant\nYes, there is a couch in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "144984",
+    "image_file": "000000144984.jpg",
+    "object": "remote",
+    "question": "Is there a remote in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a remote in the image?\nassistant\nYes, there is a remote in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "144984",
+    "image_file": "000000144984.jpg",
+    "object": "apple",
+    "question": "Is there an apple in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there an apple in the image?\nassistant\nThere is no existence of an apple in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "144984",
+    "image_file": "000000144984.jpg",
+    "object": "frisbee",
+    "question": "Is there a frisbee in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a frisbee in the image?\nassistant\nThere is no existence of a frisbee in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "144984",
+    "image_file": "000000144984.jpg",
+    "object": "sheep",
+    "question": "Is there a sheep in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a sheep in the image?\nassistant\nThere is no existence of a sheep in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "44877",
+    "image_file": "000000044877.jpg",
+    "object": "sports ball",
+    "question": "Is there a sports ball in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a sports ball in the image?\nassistant\nYes, there is a sports ball in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "44877",
+    "image_file": "000000044877.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there is a person in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "44877",
+    "image_file": "000000044877.jpg",
+    "object": "tennis racket",
+    "question": "Is there a tennis racket in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a tennis racket in the image?\nassistant\nYes, there is a tennis racket in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "44877",
+    "image_file": "000000044877.jpg",
+    "object": "truck",
+    "question": "Is there a truck in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a truck in the image?\nassistant\nThere is no existence of a truck in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "44877",
+    "image_file": "000000044877.jpg",
+    "object": "cat",
+    "question": "Is there a cat in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a cat in the image?\nassistant\nThere is no existence of a cat in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "44877",
+    "image_file": "000000044877.jpg",
+    "object": "elephant",
+    "question": "Is there an elephant in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there an elephant in the image?\nassistant\nThere is no existence of an elephant in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "415716",
+    "image_file": "000000415716.jpg",
+    "object": "chair",
+    "question": "Is there a chair in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a chair in the image?\nassistant\nThere is no existence of a chair in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "415716",
+    "image_file": "000000415716.jpg",
+    "object": "clock",
+    "question": "Is there a clock in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a clock in the image?\nassistant\nThere is no clock visible in the image.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "415716",
+    "image_file": "000000415716.jpg",
+    "object": "laptop",
+    "question": "Is there a laptop in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a laptop in the image?\nassistant\nThere is no existence of a laptop in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "415716",
+    "image_file": "000000415716.jpg",
+    "object": "boat",
+    "question": "Is there a boat in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a boat in the image?\nassistant\nThere is no existence of a boat in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "415716",
+    "image_file": "000000415716.jpg",
+    "object": "orange",
+    "question": "Is there an orange in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there an orange in the image?\nassistant\nThere is no existence of an orange in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "415716",
+    "image_file": "000000415716.jpg",
+    "object": "sandwich",
+    "question": "Is there a sandwich in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a sandwich in the image?\nassistant\nThere is no existence of any sandwich in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "419601",
+    "image_file": "000000419601.jpg",
+    "object": "chair",
+    "question": "Is there a chair in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a chair in the image?\nassistant\nYes, there is a chair in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "419601",
+    "image_file": "000000419601.jpg",
+    "object": "couch",
+    "question": "Is there a couch in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a couch in the image?\nassistant\nYes, there is a couch in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "419601",
+    "image_file": "000000419601.jpg",
+    "object": "bed",
+    "question": "Is there a bed in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bed in the image?\nassistant\nThere is no existence of a bed in the image.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "419601",
+    "image_file": "000000419601.jpg",
+    "object": "clock",
+    "question": "Is there a clock in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a clock in the image?\nassistant\nThere is no existence of a clock in the image.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "419601",
+    "image_file": "000000419601.jpg",
+    "object": "bicycle",
+    "question": "Is there a bicycle in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bicycle in the image?\nassistant\nThere is no existence of a bicycle in the image.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "419601",
+    "image_file": "000000419601.jpg",
+    "object": "bird",
+    "question": "Is there a bird in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bird in the image?\nassistant\nThere is no existence of any bird in the image.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "177489",
+    "image_file": "000000177489.jpg",
+    "object": "chair",
+    "question": "Is there a chair in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a chair in the image?\nassistant\nYes, there is a chair in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "177489",
+    "image_file": "000000177489.jpg",
+    "object": "pizza",
+    "question": "Is there a pizza in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a pizza in the image?\nassistant\nYes, there is a pizza on the table in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "177489",
+    "image_file": "000000177489.jpg",
+    "object": "fork",
+    "question": "Is there a fork in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a fork in the image?\nassistant\nThere is no existence of any fork in the image description.",
+    "prediction": "no",
+    "correct": false
+  },
+  {
+    "image_id": "177489",
+    "image_file": "000000177489.jpg",
+    "object": "cat",
+    "question": "Is there a cat in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a cat in the image?\nassistant\nThere is no existence of a cat in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "177489",
+    "image_file": "000000177489.jpg",
+    "object": "tennis racket",
+    "question": "Is there a tennis racket in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a tennis racket in the image?\nassistant\nThere is no existence of any tennis racket in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "177489",
+    "image_file": "000000177489.jpg",
+    "object": "remote",
+    "question": "Is there a remote in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a remote in the image?\nassistant\nThere is no existence of any remote control in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "368752",
+    "image_file": "000000368752.jpg",
+    "object": "bowl",
+    "question": "Is there a bowl in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a bowl in the image?\nassistant\nYes, there is a bowl on the table.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "368752",
+    "image_file": "000000368752.jpg",
+    "object": "cup",
+    "question": "Is there a cup in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a cup in the image?\nassistant\nYes, there is a cup in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "368752",
+    "image_file": "000000368752.jpg",
+    "object": "person",
+    "question": "Is there a person in the image?",
+    "ground_truth": "yes",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a person in the image?\nassistant\nYes, there is a person in the image.",
+    "prediction": "yes",
+    "correct": true
+  },
+  {
+    "image_id": "368752",
+    "image_file": "000000368752.jpg",
+    "object": "baseball bat",
+    "question": "Is there a baseball bat in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a baseball bat in the image?\nassistant\nThere is no existence of a baseball bat in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "368752",
+    "image_file": "000000368752.jpg",
+    "object": "toaster",
+    "question": "Is there a toaster in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a toaster in the image?\nassistant\nThere is no existence of a toaster in the image description.",
+    "prediction": "no",
+    "correct": true
+  },
+  {
+    "image_id": "368752",
+    "image_file": "000000368752.jpg",
+    "object": "giraffe",
+    "question": "Is there a giraffe in the image?",
+    "ground_truth": "no",
+    "raw_answer": "system\nYou are a helpful assistant.\nuser\nIs there a giraffe in the image?\nassistant\nThere is no existence of a giraffe in the image description.",
+    "prediction": "no",
+    "correct": true
+  }
+]

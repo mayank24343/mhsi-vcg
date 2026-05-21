@@ -4,7 +4,7 @@ from PIL import Image
 from models.loader import load_model
 from pipeline.impl1 import Pipeline1
 from pipeline.impl2 import Pipeline2
-from config import LVLM_MODEL_NAME
+from config import LVLM_MODEL_NAME, ALPHA
 
 import torch
 
@@ -41,10 +41,11 @@ def main():
     # run
     answer = pipeline.generate(text=args.question, image=image)
 
-    print("\n" + "~"*50)
-    print("FINAL ANSWER:")
-    print(answer)
-    print("~"*50)
+    with open(R"C:\Users\Mayank\OneDrive\Desktop\MHSI\outputs\outputs.txt",'a') as f:
+        f.write(f"\n\nModel : {LVLM_MODEL_NAME}, Alpha: {ALPHA}, Question: {args.question}, Image: {args.image}")
+        f.write("\n")
+        f.write(answer)
+
 
 
 if __name__ == "__main__":

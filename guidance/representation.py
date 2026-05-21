@@ -1,12 +1,11 @@
 import torch
-import torch.nn.functional as F
 from typing import List
 
 
 class RepresentationExtractor:
     """
-    For each text string (object name or caption),
-    extract its d×1 representation from the LLM's
+    For each text string (object name or caption), 
+    extract its dx1 representation from the LLM's
     final hidden layer before the LM head.
     """
 
@@ -18,7 +17,7 @@ class RepresentationExtractor:
     def get_text_representation(self, text: str) -> torch.Tensor:
         """
         Tokenize text, run through LLM, return final hidden state
-        of the last token. Shape: d
+        of the last token. Shape: d x 1
 
         Args:
             text: a single string e.g. "person" or "a dog sitting on a chair"
@@ -31,25 +30,26 @@ class RepresentationExtractor:
 
         outputs = self.model.language_model(
             input_ids=inputs.input_ids,
-            output_hidden_states=True
+            output_hidden_states=True # need hidden states not just logits
         )
 
-        # final layer hidden state: 1 × T × d
+        # final layer hidden state: 1 x T x d
         # take last token: d
-        final_hidden = outputs.hidden_states[-1][0, -1, :]
+        last_idx = inputs.attention_mask[0].sum() - 1 # 1 1 1 0 then index is 2 sum is 3
+        final_hidden = outputs.hidden_states[-1][0, last_idx] 
 
-        return final_hidden   # shape: d
+        return final_hidden   # shape: d x 1
 
     @torch.no_grad()
     def build_representation_matrix(self, texts: List[str]) -> torch.Tensor:
         """
-        Build M × d matrix from list of text strings.
+        Build M + k x d matrix
 
         Args:
             texts: list of object names or captions
 
         Returns:
-            M × d tensor
+            M + k x d tensor
         """
         if not texts:
             return None
@@ -59,6 +59,6 @@ class RepresentationExtractor:
             rep = self.get_text_representation(text)
             reps.append(rep)
 
-        matrix = torch.stack(reps, dim=0)   # M × d
+        matrix = torch.stack(reps, dim=0)   # M + k × d
         print(f"[RepresentationExtractor] Matrix shape: {matrix.shape}")
         return matrix

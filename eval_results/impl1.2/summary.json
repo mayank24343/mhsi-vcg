@@ -1,0 +1,132 @@
+{
+  "0.0": {
+    "random": {
+      "accuracy": 89.13,
+      "precision": 100.0,
+      "recall": 78.26,
+      "f1": 87.8,
+      "yes_ratio": 39.13,
+      "total": 138
+    },
+    "popular": {
+      "accuracy": 82.61,
+      "precision": 97.87,
+      "recall": 66.67,
+      "f1": 79.31,
+      "yes_ratio": 34.06,
+      "total": 138
+    },
+    "adversarial": {
+      "accuracy": 84.06,
+      "precision": 97.96,
+      "recall": 69.57,
+      "f1": 81.36,
+      "yes_ratio": 35.51,
+      "total": 138
+    }
+  },
+  "-0.1": {
+    "random": {
+      "accuracy": 89.13,
+      "precision": 100.0,
+      "recall": 78.26,
+      "f1": 87.8,
+      "yes_ratio": 39.13,
+      "total": 138
+    },
+    "popular": {
+      "accuracy": 82.61,
+      "precision": 97.87,
+      "recall": 66.67,
+      "f1": 79.31,
+      "yes_ratio": 34.06,
+      "total": 138
+    },
+    "adversarial": {
+      "accuracy": 84.06,
+      "precision": 97.96,
+      "recall": 69.57,
+      "f1": 81.36,
+      "yes_ratio": 35.51,
+      "total": 138
+    }
+  },
+  "-0.2": {
+    "random": {
+      "accuracy": 89.13,
+      "precision": 100.0,
+      "recall": 78.26,
+      "f1": 87.8,
+      "yes_ratio": 39.13,
+      "total": 138
+    },
+    "popular": {
+      "accuracy": 82.61,
+      "precision": 97.87,
+      "recall": 66.67,
+      "f1": 79.31,
+      "yes_ratio": 34.06,
+      "total": 138
+    },
+    "adversarial": {
+      "accuracy": 84.06,
+      "precision": 97.96,
+      "recall": 69.57,
+      "f1": 81.36,
+      "yes_ratio": 35.51,
+      "total": 138
+    }
+  },
+  "-0.5": {
+    "random": {
+      "accuracy": 85.51,
+      "precision": 100.0,
+      "recall": 71.01,
+      "f1": 83.05,
+      "yes_ratio": 35.51,
+      "total": 138
+    },
+    "popular": {
+      "accuracy": 80.43,
+      "precision": 100.0,
+      "recall": 60.87,
+      "f1": 75.68,
+      "yes_ratio": 30.43,
+      "total": 138
+    },
+    "adversarial": {
+      "accuracy": 81.16,
+      "precision": 100.0,
+      "recall": 62.32,
+      "f1": 76.79,
+      "yes_ratio": 31.16,
+      "total": 138
+    }
+  },
+  "-1.0": {
+    "random": {
+      "accuracy": 83.33,
+      "precision": 100.0,
+      "recall": 66.67,
+      "f1": 80.0,
+      "yes_ratio": 33.33,
+      "total": 138
+    },
+    "popular": {
+      "accuracy": 78.26,
+      "precision": 100.0,
+      "recall": 56.52,
+      "f1": 72.22,
+      "yes_ratio": 28.26,
+      "total": 138
+    },
+    "adversarial": {
+      "accuracy": 78.99,
+      "precision": 100.0,
+      "recall": 57.97,
+      "f1": 73.39,
+      "yes_ratio": 28.99,
+      "total": 138
+    }
+  }
+}
