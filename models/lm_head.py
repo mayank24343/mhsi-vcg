@@ -21,6 +21,7 @@ class SVDGuidedLMHead(nn.Module):
         self.alpha = alpha
         self.top_k = top_k
         self.V = None 
+        self.V_neg = 0
 
     def precompute(self, representation_matrix: torch.Tensor):
         """
@@ -54,9 +55,22 @@ class SVDGuidedLMHead(nn.Module):
               #f"Representation matrix: {X.shape}, "
               #f"Singular vectors kept: {V.shape[1]}")
 
+    def precompute_negative(self, representation_matrix: torch.Tensor):
+        """Compute V' from non-detected object representations. M' x d → V' (d x k')"""
+        X = F.normalize(representation_matrix.float(), dim=-1)
+        U, S, Vh = torch.linalg.svd(X, full_matrices=False)
+
+        if self.top_k is not None:
+            Vh = Vh[:self.top_k, :]
+
+        V_neg = Vh.T
+        V_neg, _ = torch.linalg.qr(V_neg)
+        self.V_neg = V_neg
+
     def reset(self):
         """Call between images to reset."""
         self.V = None
+        self.V_neg = None
 
     def forward(self, hidden_states: torch.Tensor):
         """
@@ -83,10 +97,17 @@ class SVDGuidedLMHead(nn.Module):
             amplification = coeffs @ V.T        # B x T x d
 
             hidden_states = (
-                hidden_states
-                + self.alpha * amplification
+                self.alpha*hidden_states
+                + (1-self.alpha )* amplification
             )
             #print("after modification")
             #print(hidden_states.shape)
+            if self.V_neg is not None:
+                V_neg = self.V_neg.to(
+                    hidden_states.device,
+                    dtype=hidden_states.dtype
+                )
+                neg_projection = (hidden_states @ V_neg) @ V_neg.T  # B × T × d
+                hidden_states = hidden_states - (1 - self.alpha) * neg_projection
 
         return self.original_lm_head(hidden_states)

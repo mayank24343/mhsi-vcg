@@ -26,6 +26,7 @@ COCO_CLASSES = [
     'teddy bear', 'hair drier', 'toothbrush'
 ]
 
+COCO_VALID_CLASSES = [c for c in COCO_CLASSES if c != 'N/A']
 
 class ObjectDetector:
     """
@@ -133,3 +134,25 @@ class ObjectDetector:
         result = list(intersection)
         print(f"[ObjectDetector] Final objects: {result}")
         return result
+    
+    def detect_with_negatives(self, image: Image.Image):
+        """
+        Run detection and return both:
+          - detected:     objects found in the image (intersection)
+          - non_detected: valid COCO objects NOT found in the image
+
+        Returns:
+            detected (list), non_detected (list)
+        """
+        detected = self.detect(image)           # existing method, returns list
+        detected_set = set(detected)
+
+        non_detected = [
+            c for c in COCO_VALID_CLASSES
+            if c not in detected_set
+        ]
+
+        print(f"[ObjectDetector] Detected: {len(detected)}, "
+              f"Non-detected: {len(non_detected)}")
+
+        return detected, non_detected
