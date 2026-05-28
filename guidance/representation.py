@@ -22,21 +22,31 @@ class RepresentationExtractor:
         Args:
             text: a single string e.g. "person" or "a dog sitting on a chair"
         """
+        # 1. Get the correct device
+        target_device = next(self.model.model.text_model.parameters()).device
+        
+        # 2. Get the exact datatype of the embedding weights
+        embed_dtype = self.model.model.text_model.embed_tokens.weight.dtype
+
         inputs = self.tokenizer(
             text,
             return_tensors="pt",
             add_special_tokens=True
-        ).to(next(self.model.language_model.parameters()).device)
+        ).to(next(self.model.model.text_model.parameters()).device)
 
-        outputs = self.model.language_model(
-            input_ids=inputs.input_ids,
+       
+        inputs_embeds = self.model.model.text_model.embed_tokens(inputs.input_ids).to(embed_dtype) 
+
+        outputs = self.model.model.text_model(
+            inputs_embeds=inputs_embeds,
+            attention_mask = inputs.attention_mask,
             output_hidden_states=True # need hidden states not just logits
         )
 
         # final layer hidden state: 1 x T x d
         # take last token: d
         last_idx = inputs.attention_mask[0].sum() - 1 # 1 1 1 0 then index is 2 sum is 3
-        final_hidden = outputs.hidden_states[-1][0, last_idx] 
+        final_hidden = outputs.hidden_states[-1][0, last_idx].float()
 
         return final_hidden   # shape: d x 1
 

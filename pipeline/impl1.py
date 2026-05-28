@@ -137,12 +137,13 @@ class Pipeline1:
         self.model.lm_head.V_neg = V_neg
 
         # ── Step 3: prepare inputs ──────────────────────────────────────
+        # REPLACE with (SmolVLM format):
         messages = [
             {
                 "role": "user",
                 "content": [
-                    {"type": "image", "image": image},
-                    {"type": "text",  "text": text},
+                    {"type": "image"},
+                    {"type": "text", "text": text},
                 ],
             }
         ]
@@ -154,14 +155,14 @@ class Pipeline1:
         )
 
         inputs = self.processor(
-            text=[formatted_text],
+            text=formatted_text,
             images=[image],
-            padding=True,
             return_tensors="pt"
-        ).to(DEVICE)
+        ).to(DEVICE,dtype=torch.bfloat16)
 
         # ── Step 4: generate ────────────────────────────────────────────
         with torch.no_grad():
+            
             output_ids = self.model.generate(
                 **inputs,
                 max_new_tokens=MAX_NEW_TOKENS,

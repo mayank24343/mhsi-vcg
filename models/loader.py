@@ -2,17 +2,21 @@ import torch
 
 from transformers import (
     AutoProcessor,
-    Qwen2VLForConditionalGeneration
+    Qwen2VLForConditionalGeneration,
+    AutoModelForVision2Seq,
+    BitsAndBytesConfig,
+    AutoModelForImageTextToText
 )
 
 from models.lm_head import SVDGuidedLMHead
 from config import DEVICE, ALPHA, TOP_SVD_COMPONENTS
 
-
+"""
 def load_model(model_name: str):
 
     print(f"[loader] Loading {model_name}...")
 
+    
     model = Qwen2VLForConditionalGeneration.from_pretrained(
         model_name,
         torch_dtype=torch.float16,
@@ -22,10 +26,22 @@ def load_model(model_name: str):
     processor = AutoProcessor.from_pretrained(model_name)
 
     tokenizer = processor.tokenizer
+   
+    model = AutoModelForVision2Seq.from_pretrained(
+        model_name,
+        torch_dtype=torch.bfloat16,
+        low_cpu_mem_usage=True
+    ).to(DEVICE)
 
-    # Replace LM head
+    processor = AutoProcessor.from_pretrained(model_name)
+    tokenizer = processor.tokenizer
+
+    # SmolVLM architecture: model.lm_head sits directly on the model
+    # not under model.language_model
+    # verify before wrapping:
+    print(f"[loader] LM head: {type(model.lm_head)}")
+
     original_lm_head = model.lm_head
-
     model.lm_head = SVDGuidedLMHead(
         original_lm_head,
         alpha=ALPHA,
@@ -33,7 +49,37 @@ def load_model(model_name: str):
     )
 
     model.eval()
-
     print("[loader] Model loaded and LM head replaced.")
+    return model, tokenizer, processor
+"""
 
+import torch
+from transformers import SmolVLMProcessor, SmolVLMForConditionalGeneration
+from models.lm_head import SVDGuidedLMHead
+from config import DEVICE, ALPHA, TOP_SVD_COMPONENTS
+
+
+def load_model(model_name: str):
+    print(f"[loader] Loading {model_name}...")
+
+    model = SmolVLMForConditionalGeneration.from_pretrained(
+        model_name,
+        torch_dtype=torch.bfloat16,
+        low_cpu_mem_usage=True
+    ).to(DEVICE)
+
+    processor = SmolVLMProcessor.from_pretrained(model_name)
+    tokenizer = processor.tokenizer
+
+    print(f"[loader] LM head: {type(model.lm_head)}")
+
+    original_lm_head = model.lm_head
+    model.lm_head = SVDGuidedLMHead(
+        original_lm_head,
+        alpha=ALPHA,
+        top_k=TOP_SVD_COMPONENTS
+    )
+
+    model.eval()
+    print("[loader] Model loaded and LM head replaced.")
     return model, tokenizer, processor
