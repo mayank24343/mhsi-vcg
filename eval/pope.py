@@ -3,6 +3,12 @@ import random
 from collections import Counter
 from dataclasses import dataclass
 from typing import List, Tuple, Dict
+ # add this import at the top of eval/pope.py
+from utils.cache_io import (
+    save_pope_questions,
+    load_pope_questions,
+    pope_is_cached
+)
 
 
 @dataclass
@@ -229,4 +235,45 @@ class POPEDataset:
 
         print(f"[POPE] Built {len(questions)} questions "
               f"({sampling} sampling, {len(sampled_ids)} images).")
+        return questions
+
+    # add this method to POPEDataset class
+    def load_or_build(
+        self,
+        sampling: str,
+        num_images: int,
+        questions_per_image: int
+    ) -> List[POPEQuestion]:
+        """
+        Load questions from disk if cached, otherwise build and save.
+        Guarantees same questions across all runs for reproducibility.
+
+        Args:
+            sampling: "random", "popular", or "adversarial"
+            num_images: number of images
+            questions_per_image: l in the paper
+
+        Returns:
+            list of POPEQuestion
+        """
+        cached_data = load_pope_questions(sampling, num_images, questions_per_image)
+
+        if cached_data is not None:
+            # reconstruct POPEQuestion objects from dicts
+            return [
+                POPEQuestion(
+                    image_id=d["image_id"],
+                    image_file=d["image_file"],
+                    object_name=d["object_name"],
+                    question=d["question"],
+                    answer=d["answer"],
+                    sampling=d["sampling"],
+                )
+                for d in cached_data
+            ]
+
+        # not cached — build and save
+        print(f"[POPE] No cache found for {sampling}, building questions...")
+        questions = self.build(sampling)
+        save_pope_questions(sampling, num_images, questions_per_image, questions)
         return questions

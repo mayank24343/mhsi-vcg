@@ -4,6 +4,7 @@ from pipeline.impl1 import Pipeline1
 from pipeline.impl2 import Pipeline2
 from eval.pope_runner import run_full_evaluation
 from config import LVLM_MODEL_NAME
+import torch
 
 
 def parse_args():
@@ -23,6 +24,8 @@ def parse_args():
 
 
 def main():
+    torch.cuda.empty_cache()
+    torch.backends.cudnn.benchmark = True
     args = parse_args()
 
     # load model once — reused across all alpha values

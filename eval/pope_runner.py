@@ -8,6 +8,7 @@ from tqdm import tqdm
 from eval.pope import POPEDataset, POPEQuestion
 from eval.pope_metrics import compute_metrics, POPEMetrics
 from config import DEVICE, MAX_NEW_TOKENS
+import torch
 
 
 def extract_yes_no(raw_answer: str) -> str:
@@ -149,7 +150,7 @@ def run_full_evaluation(
 
     # precompute all question sets
     question_sets = {
-        s: pope.build(s) for s in samplings
+        s: pope.load_or_build(s, num_images, questions_per_image) for s in samplings
     }
 
     # storage for all results
@@ -174,6 +175,8 @@ def run_full_evaluation(
     shared_cache = pipeline_for_precompute._guidance_cache
 
     for alpha in alphas:
+        torch.cuda.empty_cache()
+        torch.backends.cudnn.benchmark = True
         print(f"\n{'='*60}")
         print(f"Evaluating alpha = {alpha}")
         print(f"{'='*60}")

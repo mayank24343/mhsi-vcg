@@ -285,7 +285,7 @@
     "object": "banana",
     "question": "Is there a banana in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a banana in the image?\nAssistant: There is no banana in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a banana in the image?\nAssistant: There is no banana present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -405,7 +405,7 @@
     "object": "bus",
     "question": "Is there a bus in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a bus in the image?\nAssistant: No, there is no bus present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bus in the image?\nAssistant: No, there is no bus in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -575,9 +575,9 @@
     "object": "orange",
     "question": "Is there an orange in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there an orange in the image?\nAssistant: No, there is no orange in the image.",
-    "prediction": "no",
-    "correct": true
+    "raw_answer": "User:\n\n\n\nIs there an orange in the image?\nAssistant: Yes, there is an orange in the image.",
+    "prediction": "yes",
+    "correct": false
   },
   {
     "image_id": "557172",
@@ -675,7 +675,7 @@
     "object": "bicycle",
     "question": "Is there a bicycle in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a bicycle in the image?\nAssistant: Yes, there is a bicycle in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bicycle in the image?\nAssistant: Yes, there is a bicycle parked on the street.",
     "prediction": "yes",
     "correct": true
   },
@@ -1055,7 +1055,7 @@
     "object": "microwave",
     "question": "Is there a microwave in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a microwave in the image?\nAssistant: No, there is no microwave in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a microwave in the image?\nAssistant: There is no microwave visible in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -1085,7 +1085,7 @@
     "object": "knife",
     "question": "Is there a knife in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a knife in the image?\nAssistant: Yes, there is a knife in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a knife in the image?\nAssistant: Yes, there is a knife on the counter.",
     "prediction": "yes",
     "correct": true
   },
@@ -1145,7 +1145,7 @@
     "object": "apple",
     "question": "Is there an apple in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there an apple in the image?\nAssistant: Yes, there is an apple in the image.",
+    "raw_answer": "User:\n\n\n\nIs there an apple in the image?\nAssistant: Yes, there is an apple on the table in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -1605,7 +1605,7 @@
     "object": "refrigerator",
     "question": "Is there a refrigerator in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a refrigerator in the image?\nAssistant: There is no mention of a refrigerator in the image, so it is not present.",
+    "raw_answer": "User:\n\n\n\nIs there a refrigerator in the image?\nAssistant: There is no mention of a refrigerator in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -1645,7 +1645,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\n\nIs there a person in the image?\nAssistant: There is no person in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a person in the image?\nAssistant: No, there is no person in the image.",
     "prediction": "no",
     "correct": false
   },
@@ -1655,7 +1655,7 @@
     "object": "baseball glove",
     "question": "Is there a baseball glove in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a baseball glove in the image?\nAssistant: There is no mention of a baseball glove in the image, so it is not present.",
+    "raw_answer": "User:\n\n\n\n\nIs there a baseball glove in the image?\nAssistant: There is no baseball glove present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -1735,7 +1735,7 @@
     "object": "sandwich",
     "question": "Is there a sandwich in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a sandwich in the image?\nAssistant: There is no sandwich present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a sandwich in the image?\nAssistant: There is no sandwich visible in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -2025,9 +2025,9 @@
     "object": "laptop",
     "question": "Is there a laptop in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a laptop in the image?\nAssistant: There is no laptop visible in the image.",
-    "prediction": "no",
-    "correct": true
+    "raw_answer": "User:\n\n\n\nIs there a laptop in the image?\nAssistant: Yes, there is a laptop on the bus.",
+    "prediction": "yes",
+    "correct": false
   },
   {
     "image_id": "269632",
@@ -2035,7 +2035,7 @@
     "object": "cake",
     "question": "Is there a cake in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a cake in the image?\nAssistant: There is no cake present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a cake in the image?\nAssistant: There is no mention of a cake in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -2055,7 +2055,7 @@
     "object": "car",
     "question": "Is there a car in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a car in the image?\nAssistant: Yes, there is a car in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a car in the image?\nAssistant: Yes, there is a red car in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -2215,7 +2215,7 @@
     "object": "toilet",
     "question": "Is there a toilet in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a toilet in the image?\nAssistant: No, there is no toilet present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a toilet in the image?\nAssistant: No, there is no toilet in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -2415,7 +2415,7 @@
     "object": "backpack",
     "question": "Is there a backpack in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a backpack in the image?\nAssistant: Yes, there is a backpack in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a backpack in the image?\nAssistant: Yes, there is a backpack on the bench.",
     "prediction": "yes",
     "correct": true
   },
@@ -2515,9 +2515,9 @@
     "object": "scissors",
     "question": "Is there a scissors in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a scissors in the image?\nAssistant: Yes, there is a scissors in the image.",
-    "prediction": "yes",
-    "correct": false
+    "raw_answer": "User:\n\n\n\nIs there a scissors in the image?\nAssistant: There is no mention of scissors in the image, so it is not possible to confirm their presence.",
+    "prediction": "no",
+    "correct": true
   },
   {
     "image_id": "17905",
@@ -2525,7 +2525,7 @@
     "object": "fire hydrant",
     "question": "Is there a fire hydrant in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\n\nIs there a fire hydrant in the image?\nAssistant: Yes, there is a fire hydrant in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a fire hydrant in the image?\nAssistant: Yes, there is a red fire hydrant in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -2625,7 +2625,7 @@
     "object": "boat",
     "question": "Is there a boat in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a boat in the image?\nAssistant: There is no boat present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a boat in the image?\nAssistant: No, there is no boat in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -2675,7 +2675,7 @@
     "object": "traffic light",
     "question": "Is there a traffic light in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a traffic light in the image?\nAssistant: There is no traffic light visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a traffic light in the image?\nAssistant: There is no mention of a traffic light in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -3005,7 +3005,7 @@
     "object": "cat",
     "question": "Is there a cat in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a cat in the image?\nAssistant: Yes, there is a cat in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a cat in the image?\nAssistant: Yes",
     "prediction": "yes",
     "correct": true
   },
@@ -3105,7 +3105,7 @@
     "object": "bed",
     "question": "Is there a bed in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a bed in the image?\nAssistant: There is no bed present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bed in the image?\nAssistant: There is no mention of a bed in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -3225,7 +3225,7 @@
     "object": "clock",
     "question": "Is there a clock in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a clock in the image?\nAssistant: Yes, there is a clock on the bed.",
+    "raw_answer": "User:\n\n\n\nIs there a clock in the image?\nAssistant: Yes, there is a clock on the bedside table.",
     "prediction": "yes",
     "correct": false
   },
@@ -3295,7 +3295,7 @@
     "object": "tennis racket",
     "question": "Is there a tennis racket in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a tennis racket in the image?\nAssistant: There is no tennis racket present in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a tennis racket in the image?\nAssistant: No, there is no tennis racket in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -3415,7 +3415,7 @@
     "object": "surfboard",
     "question": "Is there a surfboard in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a surfboard in the image?\nAssistant: There is no mention of a surfboard in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a surfboard in the image?\nAssistant: There is no mention of a surfboard in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -3585,7 +3585,7 @@
     "object": "knife",
     "question": "Is there a knife in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a knife in the image?\nAssistant: There is no mention of a knife in the image, so it is not present.",
+    "raw_answer": "User:\n\n\n\nIs there a knife in the image?\nAssistant: No, there is no knife in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -3715,7 +3715,7 @@
     "object": "handbag",
     "question": "Is there a handbag in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a handbag in the image?\nAssistant: There is no handbag visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a handbag in the image?\nAssistant: There is no handbag present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -3895,7 +3895,7 @@
     "object": "sports ball",
     "question": "Is there a sports ball in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a sports ball in the image?\nAssistant: No, there is no sports ball in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a sports ball in the image?\nAssistant: No, there is no sports ball present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -4205,7 +4205,7 @@
     "object": "car",
     "question": "Is there a car in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a car in the image?\nAssistant: Yes, there is a car parked on the street in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a car in the image?\nAssistant: Yes, there is a car in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -4535,7 +4535,7 @@
     "object": "cup",
     "question": "Is there a cup in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a cup in the image?\nAssistant: There is no cup visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a cup in the image?\nAssistant: There is a cup in the image, but it is not clear if it is a cup of coffee or a cup of tea.",
     "prediction": "no",
     "correct": true
   },
@@ -4635,9 +4635,9 @@
     "object": "stop sign",
     "question": "Is there a stop sign in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a stop sign in the image?\nAssistant: Yes, there is a stop sign in the image.",
-    "prediction": "yes",
-    "correct": true
+    "raw_answer": "User:\n\n\n\nIs there a stop sign in the image?\nAssistant: There is no stop sign visible in the image.",
+    "prediction": "no",
+    "correct": false
   },
   {
     "image_id": "127092",
@@ -4695,7 +4695,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a man in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -4895,7 +4895,7 @@
     "object": "baseball bat",
     "question": "Is there a baseball bat in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a baseball bat in the image?\nAssistant: There is no mention of a baseball bat in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a baseball bat in the image?\nAssistant: No, there is no baseball bat in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -4935,7 +4935,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a man in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes",
     "prediction": "yes",
     "correct": true
   },
@@ -5145,9 +5145,9 @@
     "object": "skateboard",
     "question": "Is there a skateboard in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a skateboard in the image?\nAssistant: There is no skateboard visible in the image.",
-    "prediction": "no",
-    "correct": true
+    "raw_answer": "User:\n\n\n\nIs there a skateboard in the image?\nAssistant: Yes, there is a skateboard in the image.",
+    "prediction": "yes",
+    "correct": false
   },
   {
     "image_id": "377239",
@@ -5195,7 +5195,7 @@
     "object": "kite",
     "question": "Is there a kite in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a kite in the image?\nAssistant: There is no kite in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a kite in the image?\nAssistant: There is no kite present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -5915,7 +5915,7 @@
     "object": "hot dog",
     "question": "Is there a hot dog in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a hot dog in the image?\nAssistant: There is no hot dog present in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a hot dog in the image?\nAssistant: There is no mention of a hot dog in the image, so it cannot be confirmed or denied.",
     "prediction": "no",
     "correct": true
   },
@@ -6755,7 +6755,7 @@
     "object": "suitcase",
     "question": "Is there a suitcase in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a suitcase in the image?\nAssistant: There is no mention of a suitcase in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a suitcase in the image?\nAssistant: There is no mention of a suitcase in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -6765,7 +6765,7 @@
     "object": "sandwich",
     "question": "Is there a sandwich in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a sandwich in the image?\nAssistant: There is no sandwich present in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a sandwich in the image?\nAssistant: There is no sandwich visible in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -7155,7 +7155,7 @@
     "object": "carrot",
     "question": "Is there a carrot in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\n\nIs there a carrot in the image?\nAssistant: Yes, there is a carrot in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a carrot in the image?\nAssistant: Yes, there is a carrot in the soup.",
     "prediction": "yes",
     "correct": true
   },
@@ -7185,7 +7185,7 @@
     "object": "backpack",
     "question": "Is there a backpack in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a backpack in the image?\nAssistant: There is no backpack present in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a backpack in the image?\nAssistant: There is no mention of a backpack in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -7225,7 +7225,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a woman in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -7485,9 +7485,9 @@
     "object": "motorcycle",
     "question": "Is there a motorcycle in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a motorcycle in the image?\nAssistant: There is no motorcycle present in the image.",
-    "prediction": "no",
-    "correct": true
+    "raw_answer": "User:\n\n\n\nIs there a motorcycle in the image?\nAssistant: Yes, there is a motorcycle in the image.",
+    "prediction": "yes",
+    "correct": false
   },
   {
     "image_id": "567640",
@@ -7605,7 +7605,7 @@
     "object": "traffic light",
     "question": "Is there a traffic light in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a traffic light in the image?\nAssistant: There is no mention of a traffic light in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a traffic light in the image?\nAssistant: No, there is no traffic light in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -7665,7 +7665,7 @@
     "object": "vase",
     "question": "Is there a vase in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a vase in the image?\nAssistant: There is no vase in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a vase in the image?\nAssistant: There is no vase present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -7765,7 +7765,7 @@
     "object": "skis",
     "question": "Is there a skis in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a skis in the image?\nAssistant: Yes, there is a pair of skis in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a skis in the image?\nAssistant: Yes, there is a ski in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -8065,7 +8065,7 @@
     "object": "bed",
     "question": "Is there a bed in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a bed in the image?\nAssistant: There is no bed in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bed in the image?\nAssistant: There is no bed present in the image.",
     "prediction": "no",
     "correct": false
   },
@@ -8325,7 +8325,7 @@
     "object": "clock",
     "question": "Is there a clock in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a clock in the image?\nAssistant: There is no clock visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a clock in the image?\nAssistant: There is no mention of a clock in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -8375,7 +8375,7 @@
     "object": "potted plant",
     "question": "Is there a potted plant in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a potted plant in the image?\nAssistant: No, there is no potted plant in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a potted plant in the image?\nAssistant: There is no potted plant in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -8535,7 +8535,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person sitting on the couch.",
+    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person sitting on the sofa.",
     "prediction": "yes",
     "correct": true
   },
@@ -8935,9 +8935,9 @@
     "object": "tie",
     "question": "Is there a tie in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a tie in the image?\nAssistant: Yes, there is a tie on the bed.",
-    "prediction": "yes",
-    "correct": false
+    "raw_answer": "User:\n\n\n\n\nIs there a tie in the image?\nAssistant: There is no mention of a tie in the image, so it is not present.",
+    "prediction": "no",
+    "correct": true
   },
   {
     "image_id": "173004",
@@ -9065,7 +9065,7 @@
     "object": "knife",
     "question": "Is there a knife in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a knife in the image?\nAssistant: Yes, there is a knife on the table.",
+    "raw_answer": "User:\n\n\n\nIs there a knife in the image?\nAssistant: Yes, there is a knife in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -9105,7 +9105,7 @@
     "object": "frisbee",
     "question": "Is there a frisbee in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a frisbee in the image?\nAssistant: There is no frisbee present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a frisbee in the image?\nAssistant: There is no frisbee in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -9275,7 +9275,7 @@
     "object": "umbrella",
     "question": "Is there an umbrella in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there an umbrella in the image?\nAssistant: There is no umbrella present in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there an umbrella in the image?\nAssistant: There is no mention of an umbrella in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -9395,9 +9395,9 @@
     "object": "bottle",
     "question": "Is there a bottle in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a bottle in the image?\nAssistant: There is no mention of a bottle in the image, so it is not present.",
-    "prediction": "no",
-    "correct": true
+    "raw_answer": "User:\n\n\n\nIs there a bottle in the image?\nAssistant: Yes, there is a bottle in the image.",
+    "prediction": "yes",
+    "correct": false
   },
   {
     "image_id": "19786",
@@ -9455,7 +9455,7 @@
     "object": "bed",
     "question": "Is there a bed in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a bed in the image?\nAssistant: There is no bed in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a bed in the image?\nAssistant: There is no bed visible in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -9535,7 +9535,7 @@
     "object": "umbrella",
     "question": "Is there an umbrella in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there an umbrella in the image?\nAssistant: There is no umbrella present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there an umbrella in the image?\nAssistant: No, there is no umbrella in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -9615,7 +9615,7 @@
     "object": "book",
     "question": "Is there a book in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a book in the image?\nAssistant: Yes, there is a book in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a book in the image?\nAssistant: Yes, there is a book on the table.",
     "prediction": "yes",
     "correct": true
   },
@@ -9665,7 +9665,7 @@
     "object": "sports ball",
     "question": "Is there a sports ball in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a sports ball in the image?\nAssistant: Yes, there is a basketball on the floor in the background.",
+    "raw_answer": "User:\n\n\n\nIs there a sports ball in the image?\nAssistant: Yes, there is a sports ball in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -9875,9 +9875,9 @@
     "object": "wine glass",
     "question": "Is there a wine glass in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a wine glass in the image?\nAssistant: Yes, there is a wine glass on the table.",
-    "prediction": "yes",
-    "correct": false
+    "raw_answer": "User:\n\n\n\nIs there a wine glass in the image?\nAssistant: There is no wine glass visible in the image.",
+    "prediction": "no",
+    "correct": true
   },
   {
     "image_id": "415716",
@@ -9985,7 +9985,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a man in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -10135,7 +10135,7 @@
     "object": "bed",
     "question": "Is there a bed in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a bed in the image?\nAssistant: There is no bed present in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bed in the image?\nAssistant: No, there is no bed in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -10405,7 +10405,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person in the image.",
+    "raw_answer": "User:\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person lying on the bed.",
     "prediction": "yes",
     "correct": true
   },
@@ -10495,7 +10495,7 @@
     "object": "carrot",
     "question": "Is there a carrot in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a carrot in the image?\nAssistant: There is no mention of a carrot in the image, so it is not present.",
+    "raw_answer": "User:\n\n\n\nIs there a carrot in the image?\nAssistant: No, there is no carrot in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -10535,7 +10535,7 @@
     "object": "bottle",
     "question": "Is there a bottle in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a bottle in the image?\nAssistant: There is no bottle visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bottle in the image?\nAssistant: There is no mention of a bottle in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -10835,7 +10835,7 @@
     "object": "refrigerator",
     "question": "Is there a refrigerator in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a refrigerator in the image?\nAssistant: No, there is no refrigerator in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a refrigerator in the image?\nAssistant: No, there is no refrigerator visible in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -10915,7 +10915,7 @@
     "object": "bottle",
     "question": "Is there a bottle in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a bottle in the image?\nAssistant: There is no bottle visible in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a bottle in the image?\nAssistant: There is no mention of a bottle in the image, so it is not present.",
     "prediction": "no",
     "correct": true
   },
@@ -11005,7 +11005,7 @@
     "object": "laptop",
     "question": "Is there a laptop in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a laptop in the image?\nAssistant: Yes, there is a laptop on the table.",
+    "raw_answer": "User:\n\n\n\nIs there a laptop in the image?\nAssistant: Yes, there is a laptop on the table in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -11105,7 +11105,7 @@
     "object": "tv",
     "question": "Is there a tv in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a tv in the image?\nAssistant: Yes, there is a television in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a tv in the image?\nAssistant: Yes, there is a tv in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -11155,7 +11155,7 @@
     "object": "frisbee",
     "question": "Is there a frisbee in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a frisbee in the image?\nAssistant: There is no frisbee in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a frisbee in the image?\nAssistant: There is no frisbee present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -11515,7 +11515,7 @@
     "object": "skis",
     "question": "Is there a skis in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a skis in the image?\nAssistant: No, there is no skis in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a skis in the image?\nAssistant: No, there are no skis in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -11815,7 +11815,7 @@
     "object": "bottle",
     "question": "Is there a bottle in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a bottle in the image?\nAssistant: There is no bottle visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bottle in the image?\nAssistant: There is no bottle present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -11895,7 +11895,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person standing in the image.",
     "prediction": "yes",
     "correct": true
   },
@@ -12235,7 +12235,7 @@
     "object": "stop sign",
     "question": "Is there a stop sign in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a stop sign in the image?\nAssistant: There is no stop sign visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a stop sign in the image?\nAssistant: There is no stop sign present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -12355,7 +12355,7 @@
     "object": "bottle",
     "question": "Is there a bottle in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a bottle in the image?\nAssistant: There is no bottle visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bottle in the image?\nAssistant: There is no bottle present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -12405,7 +12405,7 @@
     "object": "vase",
     "question": "Is there a vase in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a vase in the image?\nAssistant: There is no vase present in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a vase in the image?\nAssistant: There is no vase in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -12415,7 +12415,7 @@
     "object": "skis",
     "question": "Is there a skis in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a skis in the image?\nAssistant: There is no skis in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a skis in the image?\nAssistant: There is no skis present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -12475,7 +12475,7 @@
     "object": "toilet",
     "question": "Is there a toilet in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a toilet in the image?\nAssistant: No, there is no toilet in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a toilet in the image?\nAssistant: No, there is no toilet present in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -12875,7 +12875,7 @@
     "object": "bowl",
     "question": "Is there a bowl in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a bowl in the image?\nAssistant: There is no bowl visible in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a bowl in the image?\nAssistant: There is no mention of a bowl in the image, so it is not possible to confirm its presence.",
     "prediction": "no",
     "correct": true
   },
@@ -12925,9 +12925,9 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: No, there is no person in the image.",
-    "prediction": "no",
-    "correct": false
+    "raw_answer": "User:\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person in the image.",
+    "prediction": "yes",
+    "correct": true
   },
   {
     "image_id": "159791",
@@ -13065,9 +13065,9 @@
     "object": "backpack",
     "question": "Is there a backpack in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a backpack in the image?\nAssistant: There is no mention of a backpack in the image, so it is not present.",
-    "prediction": "no",
-    "correct": true
+    "raw_answer": "User:\n\n\n\nIs there a backpack in the image?\nAssistant: Yes, there is a backpack in the image.",
+    "prediction": "yes",
+    "correct": false
   },
   {
     "image_id": "322163",
@@ -13175,7 +13175,7 @@
     "object": "pizza",
     "question": "Is there a pizza in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\nIs there a pizza in the image?\nAssistant: There is no pizza in the image.",
+    "raw_answer": "User:\n\n\n\nIs there a pizza in the image?\nAssistant: No, there is no pizza in the image.",
     "prediction": "no",
     "correct": true
   },
@@ -13235,7 +13235,7 @@
     "object": "wine glass",
     "question": "Is there a wine glass in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a wine glass in the image?\nAssistant: There is a glass of water on the table, but it is not a wine glass.",
+    "raw_answer": "User:\n\n\n\n\nIs there a wine glass in the image?\nAssistant: There is a wine glass on the table, but it is not mentioned in the question.",
     "prediction": "no",
     "correct": true
   },
@@ -13335,7 +13335,7 @@
     "object": "person",
     "question": "Is there a person in the image?",
     "ground_truth": "yes",
-    "raw_answer": "User:\n\n\n\n\nIs there a person in the image?\nAssistant: Yes, there is a person in the image.",
+    "raw_answer": "User:\n\n\n\n\nIs there a person in the image?\nAssistant: Yes",
     "prediction": "yes",
     "correct": true
   },
@@ -13365,9 +13365,9 @@
     "object": "remote",
     "question": "Is there a remote in the image?",
     "ground_truth": "no",
-    "raw_answer": "User:\n\n\n\n\nIs there a remote in the image?\nAssistant: Yes, there is a remote in the image.",
-    "prediction": "yes",
-    "correct": false
+    "raw_answer": "User:\n\n\n\n\nIs there a remote in the image?\nAssistant: There is no mention of a remote in the image.",
+    "prediction": "no",
+    "correct": true
   },
   {
     "image_id": "257169",
