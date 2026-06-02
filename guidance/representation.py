@@ -1,5 +1,6 @@
 import torch
 from typing import List
+from config import DEVICE, ALPHA, TOP_SVD_COMPONENTS, LVLM_MODEL_NAME
 
 
 class RepresentationExtractor:
@@ -22,31 +23,55 @@ class RepresentationExtractor:
         Args:
             text: a single string e.g. "person" or "a dog sitting on a chair"
         """
-        # 1. Get the correct device
-        target_device = next(self.model.model.text_model.parameters()).device
         
-        # 2. Get the exact datatype of the embedding weights
-        embed_dtype = self.model.model.text_model.embed_tokens.weight.dtype
+        if ("Qwen2-VL" in LVLM_MODEL_NAME):
+            
+            # 2. Get the exact datatype of the embedding weights
+            embed_dtype = self.model.language_model.embed_tokens.weight.dtype
 
-        inputs = self.tokenizer(
-            text,
-            return_tensors="pt",
-            add_special_tokens=True
-        ).to(next(self.model.model.text_model.parameters()).device)
+            inputs = self.tokenizer(
+                text,
+                return_tensors="pt",
+                add_special_tokens=True
+            ).to(next(self.model.language_model.parameters()).device)
 
-       
-        inputs_embeds = self.model.model.text_model.embed_tokens(inputs.input_ids).to(embed_dtype) 
+        
+            inputs_embeds = self.model.language_model.embed_tokens(inputs.input_ids).to(embed_dtype) 
 
-        outputs = self.model.model.text_model(
-            inputs_embeds=inputs_embeds,
-            attention_mask = inputs.attention_mask,
-            output_hidden_states=True # need hidden states not just logits
-        )
+            outputs = self.model.language_model(
+                inputs_embeds=inputs_embeds,
+                attention_mask = inputs.attention_mask,
+                output_hidden_states=True # need hidden states not just logits
+            )
 
-        # final layer hidden state: 1 x T x d
-        # take last token: d
-        last_idx = inputs.attention_mask[0].sum() - 1 # 1 1 1 0 then index is 2 sum is 3
-        final_hidden = outputs.hidden_states[-1][0, last_idx].float()
+            # final layer hidden state: 1 x T x d
+            # take last token: d
+            last_idx = inputs.attention_mask[0].sum() - 1 # 1 1 1 0 then index is 2 sum is 3
+            final_hidden = outputs.hidden_states[-1][0, last_idx].float()
+
+        if ("SmolVLM" in LVLM_MODEL_NAME):
+            # 2. Get the exact datatype of the embedding weights
+            embed_dtype = self.model.model.text_model.embed_tokens.weight.dtype
+
+            inputs = self.tokenizer(
+                text,
+                return_tensors="pt",
+                add_special_tokens=True
+            ).to(next(self.model.model.text_model.parameters()).device)
+
+        
+            inputs_embeds = self.model.model.text_model.embed_tokens(inputs.input_ids).to(embed_dtype) 
+
+            outputs = self.model.model.text_model(
+                inputs_embeds=inputs_embeds,
+                attention_mask = inputs.attention_mask,
+                output_hidden_states=True # need hidden states not just logits
+            )
+
+            # final layer hidden state: 1 x T x d
+            # take last token: d
+            last_idx = inputs.attention_mask[0].sum() - 1 # 1 1 1 0 then index is 2 sum is 3
+            final_hidden = outputs.hidden_states[-1][0, last_idx].float()
 
         return final_hidden   # shape: d x 1
 

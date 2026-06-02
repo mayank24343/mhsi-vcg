@@ -5,6 +5,7 @@ from typing import Dict, Optional, Tuple
 
 from guidance.detector import ObjectDetector
 from guidance.representation import RepresentationExtractor
+from utils.cache_io import save_guidance, load_guidance, guidance_is_cached
 from config import DEVICE, MAX_NEW_TOKENS, ALPHA
 
 
@@ -16,13 +17,14 @@ class Pipeline1:
         self.detector = ObjectDetector()
         self.extractor = RepresentationExtractor(model, tokenizer)
 
-        # cache: image_key → (V, V_neg) both on CPU, either can be None
-        self._guidance_cache: Dict[
+        # in-memory cache: avoids re-reading disk for same image in one run
+        self._memory_cache: Dict[
             str, Tuple[Optional[torch.Tensor], Optional[torch.Tensor]]
         ] = {}
 
-        self._cache_hits = 0
-        self._cache_misses = 0
+        self._cache_hits_memory = 0
+        self._cache_hits_disk   = 0
+        self._cache_misses      = 0
 
     def _get_image_key(
         self,
@@ -34,53 +36,97 @@ class Pipeline1:
         thumb = image.resize((32, 32)).tobytes()
         return str(hash(thumb))
 
-    def _compute_guidance(
+    def _compute_and_save_guidance(
         self,
-        image: Image.Image
+        image: Image.Image,
+        image_key: str
     ) -> Tuple[Optional[torch.Tensor], Optional[torch.Tensor]]:
         """
-        Run detection, build V and V_neg, return (V, V_neg) on CPU.
-        Called only on cache miss.
+        Run detection + SVD, save result to disk, return (V, V_neg).
+        Called only when neither memory nor disk cache has this image.
         """
-        # get detected and non-detected objects
         detected, non_detected = self.detector.detect_with_negatives(image)
 
-        V = None
+        V     = None
         V_neg = None
 
-        # ── positive subspace (detected objects) ───────────────────────
         if detected:
             rep_matrix = self.extractor.build_representation_matrix(detected)
             if rep_matrix is not None:
                 self.model.lm_head.precompute(rep_matrix)
                 V = self.model.lm_head.V.detach().cpu()
 
-        # ── negative subspace (non-detected COCO objects) ───────────────
+        
         if non_detected:
-            neg_matrix = self.extractor.build_representation_matrix(
-                non_detected
-            )
+            neg_matrix = self.extractor.build_representation_matrix(non_detected)
             if neg_matrix is not None:
                 self.model.lm_head.precompute_negative(neg_matrix)
                 V_neg = self.model.lm_head.V_neg.detach().cpu()
 
-        # reset lm_head — pipeline sets V/V_neg explicitly per generate call
         self.model.lm_head.reset()
 
+        # persist to disk
+        save_guidance(image_key, V, V_neg)
+
         return V, V_neg
+
+    def _get_guidance(
+        self,
+        image: Image.Image,
+        image_key: str
+    ) -> Tuple[Optional[torch.Tensor], Optional[torch.Tensor]]:
+        """
+        Guidance lookup with three levels:
+          1. memory cache  (fastest)
+          2. disk cache    (fast, persistent across runs)
+          3. compute       (slow, only when unseen image)
+        """
+        # level 1 — memory
+        if image_key in self._memory_cache:
+            self._cache_hits_memory += 1
+            return self._memory_cache[image_key]
+
+        # level 2 — disk
+        if guidance_is_cached(image_key):
+            result = load_guidance(image_key)
+            if result is not None:
+                self._cache_hits_disk += 1
+                self._memory_cache[image_key] = result
+                return result
+
+        # level 3 — compute and save
+        self._cache_misses += 1
+        result = self._compute_and_save_guidance(image, image_key)
+        self._memory_cache[image_key] = result
+        return result
 
     def precompute_guidance_for_dataset(
         self,
         image_paths: list,
         image_dir: str
     ):
+        """
+        Precompute and persist guidance for all images.
+        Skips images already cached on disk.
+        """
         unique_paths = list(set(os.path.basename(p) for p in image_paths))
-        print(f"[Pipeline1] Precomputing guidance for "
-              f"{len(unique_paths)} unique images...")
+
+        # check how many are already on disk
+        already_cached = sum(
+            1 for p in unique_paths
+            if guidance_is_cached(os.path.basename(p))
+        )
+        to_compute = len(unique_paths) - already_cached
+
+        print(f"[Pipeline1] Guidance precompute: "
+              f"{already_cached} already on disk, "
+              f"{to_compute} to compute.")
 
         for i, fname in enumerate(unique_paths):
             key = os.path.basename(fname)
-            if key in self._guidance_cache:
+
+            # skip if already on disk
+            if guidance_is_cached(key):
                 continue
 
             image_path = os.path.join(image_dir, fname)
@@ -88,31 +134,31 @@ class Pipeline1:
                 image = Image.open(image_path).convert("RGB")
             except FileNotFoundError:
                 print(f"[WARNING] Not found: {image_path}")
-                self._guidance_cache[key] = (None, None)
+                save_guidance(key, None, None)
                 continue
 
-            V, V_neg = self._compute_guidance(image)
-            self._guidance_cache[key] = (V, V_neg)
+            self._compute_and_save_guidance(image, key)
 
             if (i + 1) % 50 == 0:
-                print(f"  [{i+1}/{len(unique_paths)}] cached...")
+                print(f"  [{i+1}/{len(unique_paths)}] done...")
 
-        print(f"[Pipeline1] Done. {len(self._guidance_cache)} images cached.")
+        print(f"[Pipeline1] Precompute complete.")
 
-    def clear_cache(self):
-        self._guidance_cache.clear()
-        self._cache_hits = 0
-        self._cache_misses = 0
-        print("[Pipeline1] Cache cleared.")
+    def clear_memory_cache(self):
+        """Clear in-memory cache only — disk cache is preserved."""
+        self._memory_cache.clear()
+        print("[Pipeline1] Memory cache cleared (disk cache preserved).")
 
     def cache_stats(self):
-        total = self._cache_hits + self._cache_misses
-        hit_rate = 100 * self._cache_hits / total if total > 0 else 0
+        total = (self._cache_hits_memory
+                 + self._cache_hits_disk
+                 + self._cache_misses)
         print(
-            f"[Pipeline1] Cache — "
-            f"hits: {self._cache_hits}, "
+            f"[Pipeline1] Cache stats — "
+            f"memory hits: {self._cache_hits_memory}, "
+            f"disk hits: {self._cache_hits_disk}, "
             f"misses: {self._cache_misses}, "
-            f"hit rate: {hit_rate:.1f}%"
+            f"total: {total}"
         )
 
     def generate(
@@ -121,23 +167,15 @@ class Pipeline1:
         image: Image.Image,
         image_path: Optional[str] = None
     ) -> str:
-        # ── Step 1: look up or compute guidance ────────────────────────
+        # ── Step 1: get guidance (memory → disk → compute) ─────────────
         image_key = self._get_image_key(image, image_path)
+        V, V_neg = self._get_guidance(image, image_key)
 
-        if image_key in self._guidance_cache:
-            V, V_neg = self._guidance_cache[image_key]
-            self._cache_hits += 1
-        else:
-            self._cache_misses += 1
-            V, V_neg = self._compute_guidance(image)
-            self._guidance_cache[image_key] = (V, V_neg)
-
-        # ── Step 2: set V and V_neg on lm_head ─────────────────────────
-        self.model.lm_head.V     = V      # None is fine — lm_head checks
+        # ── Step 2: set on lm_head ──────────────────────────────────────
+        self.model.lm_head.V     = V
         self.model.lm_head.V_neg = V_neg
 
         # ── Step 3: prepare inputs ──────────────────────────────────────
-        # REPLACE with (SmolVLM format):
         messages = [
             {
                 "role": "user",
@@ -158,11 +196,10 @@ class Pipeline1:
             text=formatted_text,
             images=[image],
             return_tensors="pt"
-        ).to(DEVICE,dtype=torch.bfloat16)
+        ).to(DEVICE, dtype=torch.bfloat16)
 
         # ── Step 4: generate ────────────────────────────────────────────
         with torch.no_grad():
-            
             output_ids = self.model.generate(
                 **inputs,
                 max_new_tokens=MAX_NEW_TOKENS,
@@ -175,7 +212,7 @@ class Pipeline1:
             skip_special_tokens=True
         )[0]
 
-        # ── Step 5: reset lm_head ───────────────────────────────────────
+        # ── Step 5: reset ───────────────────────────────────────────────
         self.model.lm_head.reset()
-        print(f"[Pipeline1] Answer: {generated_text}")
+
         return generated_text

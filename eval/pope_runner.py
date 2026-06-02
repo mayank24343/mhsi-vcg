@@ -172,7 +172,7 @@ def run_full_evaluation(
         image_paths=all_image_files,
         image_dir=image_dir
     )
-    shared_cache = pipeline_for_precompute._guidance_cache
+    shared_cache = pipeline_for_precompute._memory_cache
 
     for alpha in alphas:
         torch.cuda.empty_cache()
