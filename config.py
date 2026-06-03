@@ -3,6 +3,7 @@ LVLM_MODEL_NAME = "HuggingFaceTB/SmolVLM2-2.2B-Instruct" #"Qwen/Qwen2-VL-2B-Inst
 
 # guidance hyperparameters
 ALPHA = 1    # amplification strength
+GAMMA = 0.7  # MARINE guidance strength (convex weight)
 DETR_THRESHOLD = 0.5       # confidence threshold for DETR
 RAM_THRESHOLD = 0.68         # confidence threshold for RAM++
 TOP_SVD_COMPONENTS = 3   # None = keep all, int = keep top-k

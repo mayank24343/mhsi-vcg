@@ -7,6 +7,7 @@ from guidance.detector import ObjectDetector
 from guidance.representation import RepresentationExtractor
 from utils.cache_io import save_guidance, load_guidance, guidance_is_cached
 from config import DEVICE, MAX_NEW_TOKENS, ALPHA
+import torch.nn.functional as F
 
 
 class Pipeline1:
@@ -160,6 +161,82 @@ class Pipeline1:
             f"misses: {self._cache_misses}, "
             f"total: {total}"
         )
+
+    def _build_guidance_prompt(
+        self,
+        detected_objects: list,
+        image: Image.Image,
+        text: str
+    ) -> dict:
+        """
+        Build the MARINE-style guidance input:
+        injects detected objects as a text prefix before the question.
+        """
+        object_str = ", ".join(detected_objects)
+        guidance_text = (
+            f"The following objects are present in this image: {object_str}. "
+            f"{text}"
+        )
+
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "image"},
+                    {"type": "text", "text": guidance_text},
+                ],
+            }
+        ]
+
+        formatted = self.processor.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+
+        return self.processor(
+            text=formatted,
+            images=[image],
+            return_tensors="pt"
+        ).to(DEVICE, dtype=torch.bfloat16)
+
+
+    @torch.no_grad()
+    def _run_marine_forward(
+        self,
+        detected_objects: list,
+        image: Image.Image,
+        text: str
+    ):
+        """
+        Run one forward pass with the guidance prompt.
+        Extracts log_softmax logits at the last token position.
+        Stores result in lm_head.guidance_logits for use during generation.
+        """
+        if not detected_objects or self.model.lm_head.mode != "combined":
+            return
+
+        # temporarily disable lm_head modification to get clean logits
+        # from the guided prompt — we don't want recursive modification
+        saved_mode = self.model.lm_head.mode
+        self.model.lm_head.mode = "none"
+
+        guidance_inputs = self._build_guidance_prompt(
+            detected_objects, image, text
+        )
+
+        outputs = self.model(
+            **guidance_inputs,
+            return_dict=True
+        )
+
+        # logits: B × T × vocab_size — take last token position
+        last_logits = outputs.logits[:, -1, :]              # B × vocab_size
+        log_p_guided = F.log_softmax(last_logits.float(), dim=-1)
+
+        # restore mode and store guidance logits
+        self.model.lm_head.mode = saved_mode
+        self.model.lm_head.set_guidance_logits(log_p_guided)
 
     def generate(
         self,

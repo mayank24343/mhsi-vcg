@@ -98,13 +98,13 @@ class SVDGuidedLMHead(nn.Module):
             amplification = coeffs @ V.T        # B x T x d
 
             hidden_states = (
-                h_original
-                + self.alpha* amplification
+                self.alpha*h_original
+                + (1-self.alpha)* amplification
             )
-            print(hidden_states.shape, V.shape)
+           #print(hidden_states.shape, V.shape)
             #print("after modification")
             #print(hidden_states.shape)
-            """
+            
             if self.V_neg is not None:
                 V_neg = self.V_neg.to(
                     hidden_states.device,
@@ -112,7 +112,5 @@ class SVDGuidedLMHead(nn.Module):
                 )
                 neg_projection = (h_original @ V_neg) @ V_neg.T  # B × T × d
                 hidden_states = hidden_states - (1 - self.alpha) * neg_projection
-            """
-
-
+        
         return self.original_lm_head(hidden_states)
