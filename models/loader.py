@@ -12,6 +12,7 @@ from transformers import (
 
 from models.lm_head import SVDGuidedLMHead
 from config import DEVICE, ALPHA, TOP_SVD_COMPONENTS
+from models.logit_modifier import SVDGuidedLogitModifier
 
 
 def load_model(model_name: str):
@@ -29,11 +30,20 @@ def load_model(model_name: str):
         tokenizer = processor.tokenizer
     
         original_lm_head = model.lm_head
-        model.lm_head = SVDGuidedLMHead(
+        model.lm_head = SVDGuidedLogitModifier(
+            original_lm_head,
+            alpha=ALPHA,
+            top_k_pos=TOP_SVD_COMPONENTS,
+            top_k_neg=TOP_SVD_COMPONENTS
+        )
+
+        """
+        SVDGuidedLMHead(
             original_lm_head,
             alpha=ALPHA,
             top_k=TOP_SVD_COMPONENTS
         )
+        """
 
         model.eval()
         print("[loader] Model loaded and LM head replaced.")
@@ -53,16 +63,23 @@ def load_model(model_name: str):
         print(f"[loader] LM head: {type(model.lm_head)}")
 
         original_lm_head = model.lm_head
-        model.lm_head = SVDGuidedLMHead(
+        model.lm_head = SVDGuidedLogitModifier(
+            original_lm_head,
+            alpha=ALPHA,
+            top_k_pos=TOP_SVD_COMPONENTS,
+            top_k_neg=TOP_SVD_COMPONENTS
+        )
+
+        """
+        SVDGuidedLMHead(
             original_lm_head,
             alpha=ALPHA,
             top_k=TOP_SVD_COMPONENTS
         )
-
-        model.eval()
-        print("[loader] Model loaded and LM head replaced.")
+        """
 
         return model, tokenizer, processor
+
 
     return model, tokenizer, processor
 """

@@ -244,15 +244,31 @@ class Pipeline1:
         image: Image.Image,
         image_path: Optional[str] = None
     ) -> str:
-        # ── Step 1: get guidance (memory → disk → compute) ─────────────
+
+        # ── Step 1: get guidance ────────────────────────────────────────────
         image_key = self._get_image_key(image, image_path)
         V, V_neg = self._get_guidance(image, image_key)
 
-        # ── Step 2: set on lm_head ──────────────────────────────────────
+        # ── Step 2: set V and V_neg on lm_head ─────────────────────────────
         self.model.lm_head.V     = V
         self.model.lm_head.V_neg = V_neg
 
-        # ── Step 3: prepare inputs ──────────────────────────────────────
+        """
+        # ── Step 3: MARINE guided forward pass (combined mode only) ─────────
+        if self.model.lm_head.mode == "combined":
+            # get detected objects for guidance prompt
+            # read from cache if available to avoid re-running detection
+            detected_key = f"{image_key}_detected"
+            if detected_key in self._memory_cache:
+                detected_objects = self._memory_cache[detected_key]
+            else:
+                detected_objects, _ = self.detector.detect_with_negatives(image)
+                self._memory_cache[detected_key] = detected_objects
+
+            self._run_marine_forward(detected_objects, image, text)
+        """
+
+        # ── Step 4: prepare original inputs ────────────────────────────────
         messages = [
             {
                 "role": "user",
@@ -275,7 +291,7 @@ class Pipeline1:
             return_tensors="pt"
         ).to(DEVICE, dtype=torch.bfloat16)
 
-        # ── Step 4: generate ────────────────────────────────────────────
+        # ── Step 5: generate ────────────────────────────────────────────────
         with torch.no_grad():
             output_ids = self.model.generate(
                 **inputs,
@@ -289,7 +305,7 @@ class Pipeline1:
             skip_special_tokens=True
         )[0]
 
-        # ── Step 5: reset ───────────────────────────────────────────────
+        # ── Step 6: reset ───────────────────────────────────────────────────
         self.model.lm_head.reset()
 
         return generated_text
