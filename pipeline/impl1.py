@@ -5,7 +5,7 @@ from typing import Dict, Optional, Tuple
 
 from guidance.detector import ObjectDetector
 from guidance.representation import RepresentationExtractor
-from utils.cache_io import save_guidance, load_guidance, guidance_is_cached
+from utils.cache_io import save_guidance, load_guidance, guidance_is_cached, save_guidance_logits, load_guidance_logits, guidance_logits_is_cached
 from config import DEVICE, MAX_NEW_TOKENS, ALPHA
 import torch.nn.functional as F
 
@@ -23,9 +23,16 @@ class Pipeline1:
             str, Tuple[Optional[torch.Tensor], Optional[torch.Tensor]]
         ] = {}
 
-        self._cache_hits_memory = 0
-        self._cache_hits_disk   = 0
-        self._cache_misses      = 0
+        self._logits_memory_cache: Dict[
+            Tuple[str, str], torch.Tensor
+        ] = {}
+
+        self._cache_hits_memory   = 0
+        self._cache_hits_disk     = 0
+        self._cache_misses        = 0
+        self._logits_hits_memory  = 0
+        self._logits_hits_disk    = 0
+        self._logits_misses       = 0
 
     def _get_image_key(
         self,
@@ -152,14 +159,23 @@ class Pipeline1:
 
     def cache_stats(self):
         total = (self._cache_hits_memory
-                 + self._cache_hits_disk
-                 + self._cache_misses)
+                + self._cache_hits_disk
+                + self._cache_misses)
+        logits_total = (self._logits_hits_memory
+                        + self._logits_hits_disk
+                        + self._logits_misses)
+
         print(
-            f"[Pipeline1] Cache stats — "
-            f"memory hits: {self._cache_hits_memory}, "
-            f"disk hits: {self._cache_hits_disk}, "
-            f"misses: {self._cache_misses}, "
-            f"total: {total}"
+            f"\n[Pipeline1] Guidance (V, V_neg) cache —\n"
+            f"  memory hits: {self._cache_hits_memory}, "
+            f"  disk hits:   {self._cache_hits_disk}, "
+            f"  misses:      {self._cache_misses}, "
+            f"  total:       {total}\n"
+            f"[Pipeline1] Guidance logits cache —\n"
+            f"  memory hits: {self._logits_hits_memory}, "
+            f"  disk hits:   {self._logits_hits_disk}, "
+            f"  misses:      {self._logits_misses}, "
+            f"  total:       {logits_total}"
         )
 
     def _build_guidance_prompt(
@@ -174,8 +190,7 @@ class Pipeline1:
         """
         object_str = ", ".join(detected_objects)
         guidance_text = (
-            f"The following objects are present in this image: {object_str}. "
-            f"{text}"
+            f"The image contains only the following objects: {object_str}. Do not assume anything beyond these objects. Based solely on the list, {text}"
         )
 
         messages = [
@@ -206,18 +221,42 @@ class Pipeline1:
         self,
         detected_objects: list,
         image: Image.Image,
-        text: str
+        text: str,
+        image_key: str
     ):
         """
-        Run one forward pass with the guidance prompt.
-        Extracts log_softmax logits at the last token position.
-        Stores result in lm_head.guidance_logits for use during generation.
+        Run guided forward pass with detected objects injected as text prompt.
+        Result cached in memory and on disk keyed by (image, prompt).
         """
         if not detected_objects or self.model.lm_head.mode != "combined":
             return
 
-        # temporarily disable lm_head modification to get clean logits
-        # from the guided prompt — we don't want recursive modification
+        cache_key = (image_key, text)
+
+        # ── level 1: memory cache ───────────────────────────────────────────
+        if cache_key in self._logits_memory_cache:
+            self._logits_hits_memory += 1
+            log_p_guided = self._logits_memory_cache[cache_key]
+            self.model.lm_head.set_guidance_logits(
+                log_p_guided.to(next(self.model.parameters()).device)
+            )
+            return
+
+        # ── level 2: disk cache ─────────────────────────────────────────────
+        if guidance_logits_is_cached(image_key, text):
+            log_p_guided = load_guidance_logits(image_key, text)
+            if log_p_guided is not None:
+                self._logits_hits_disk += 1
+                self._logits_memory_cache[cache_key] = log_p_guided
+                self.model.lm_head.set_guidance_logits(
+                    log_p_guided.to(next(self.model.parameters()).device)
+                )
+                return
+
+        # ── level 3: compute ────────────────────────────────────────────────
+        self._logits_misses += 1
+
+        # disable modification during guided forward pass
         saved_mode = self.model.lm_head.mode
         self.model.lm_head.mode = "none"
 
@@ -230,13 +269,20 @@ class Pipeline1:
             return_dict=True
         )
 
-        # logits: B × T × vocab_size — take last token position
-        last_logits = outputs.logits[:, -1, :]              # B × vocab_size
+        # take last token position logits
+        last_logits  = outputs.logits[:, -1, :]              # B × vocab_size
         log_p_guided = F.log_softmax(last_logits.float(), dim=-1)
 
-        # restore mode and store guidance logits
+        # restore mode
         self.model.lm_head.mode = saved_mode
-        self.model.lm_head.set_guidance_logits(log_p_guided)
+
+        # persist to disk and memory
+        save_guidance_logits(image_key, text, log_p_guided.cpu())
+        self._logits_memory_cache[cache_key] = log_p_guided.cpu()
+
+        self.model.lm_head.set_guidance_logits(
+            log_p_guided.to(next(self.model.parameters()).device)
+        )
 
     def generate(
         self,
@@ -253,11 +299,8 @@ class Pipeline1:
         self.model.lm_head.V     = V
         self.model.lm_head.V_neg = V_neg
 
-        """
-        # ── Step 3: MARINE guided forward pass (combined mode only) ─────────
+        # ── Step 3: MARINE guided forward pass ─────────────────────────────
         if self.model.lm_head.mode == "combined":
-            # get detected objects for guidance prompt
-            # read from cache if available to avoid re-running detection
             detected_key = f"{image_key}_detected"
             if detected_key in self._memory_cache:
                 detected_objects = self._memory_cache[detected_key]
@@ -265,8 +308,13 @@ class Pipeline1:
                 detected_objects, _ = self.detector.detect_with_negatives(image)
                 self._memory_cache[detected_key] = detected_objects
 
-            self._run_marine_forward(detected_objects, image, text)
-        """
+            self._run_marine_forward(
+                detected_objects=detected_objects,
+                image=image,
+                text=text,
+                image_key=image_key      # ← pass image_key for cache keying
+            )
+        
 
         # ── Step 4: prepare original inputs ────────────────────────────────
         messages = [

@@ -1,0 +1,28 @@
+{
+  "1.0": {
+    "random": {
+      "accuracy": 87.82,
+      "precision": 82.44,
+      "recall": 96.11,
+      "f1": 88.75,
+      "yes_ratio": 58.3,
+      "total": 1338
+    },
+    "popular": {
+      "accuracy": 81.24,
+      "precision": 74.36,
+      "recall": 95.37,
+      "f1": 83.56,
+      "yes_ratio": 64.13,
+      "total": 1338
+    },
+    "adversarial": {
+      "accuracy": 74.22,
+      "precision": 66.88,
+      "recall": 95.96,
+      "f1": 78.82,
+      "yes_ratio": 71.75,
+      "total": 1338
+    }
+  }
+}

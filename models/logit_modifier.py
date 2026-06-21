@@ -106,6 +106,8 @@ class SVDGuidedLogitModifier(nn.Module):
         Returns:
             logits: B × T × vocab_size
         """
+
+        """
         if self.V is not None:
 
             # match device/dtype dynamically
@@ -141,6 +143,7 @@ class SVDGuidedLogitModifier(nn.Module):
                 hidden_states = hidden_states - (1 - self.alpha) * neg_projection
     
         logits = self.original_lm_head(hidden_states)
+        """
 
         """
         if self.mode == "token":
@@ -152,6 +155,9 @@ class SVDGuidedLogitModifier(nn.Module):
         elif self.mode == "combined":
             logits = self._combined_mode(logits)
             """
+        
+        logits = self.original_lm_head(hidden_states)
+        logits = self._combined_mode(logits)
 
         return logits
 

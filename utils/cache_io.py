@@ -199,3 +199,75 @@ def compute_metrics_from_pope_json(json_path: str) -> dict:
     print(f"{'─'*40}")
 
     return metrics
+
+import hashlib
+
+# ── Guidance logits cache ────────────────────────────────────────────────────
+
+GUIDANCE_LOGITS_CACHE_DIR = "cache/guidance_logits"
+
+
+def _make_logits_key(image_key: str, text: str) -> str:
+    """
+    Unique key for (image, prompt) pair.
+    Uses image filename + md5 hash of prompt text.
+    """
+    prompt_hash = hashlib.md5(text.encode("utf-8")).hexdigest()[:12]
+    safe_image_key = image_key.replace("/", "_").replace("\\", "_")
+    return f"{safe_image_key}__{prompt_hash}"
+
+
+def guidance_logits_cache_path(image_key: str, text: str) -> str:
+    key = _make_logits_key(image_key, text)
+    return os.path.join(GUIDANCE_LOGITS_CACHE_DIR, f"{key}.json")
+
+
+def save_guidance_logits(
+    image_key: str,
+    text: str,
+    log_p_guided: torch.Tensor
+):
+    """
+    Save guidance logits for a (image, prompt) pair to disk.
+
+    Args:
+        image_key:    image filename
+        text:         the guidance prompt text
+        log_p_guided: B × vocab_size tensor (log softmax)
+    """
+    os.makedirs(GUIDANCE_LOGITS_CACHE_DIR, exist_ok=True)
+    path = guidance_logits_cache_path(image_key, text)
+
+    data = {
+        "image_key": image_key,
+        "text":      text,
+        "logits":    log_p_guided.float().cpu().tolist()
+    }
+
+    with open(path, "w") as f:
+        json.dump(data, f)
+
+
+def load_guidance_logits(
+    image_key: str,
+    text: str
+) -> Optional[torch.Tensor]:
+    """
+    Load guidance logits for a (image, prompt) pair from disk.
+
+    Returns:
+        B × vocab_size tensor or None if not cached
+    """
+    path = guidance_logits_cache_path(image_key, text)
+
+    if not os.path.exists(path):
+        return None
+
+    with open(path, "r") as f:
+        data = json.load(f)
+
+    return torch.tensor(data["logits"], dtype=torch.float32)
+
+
+def guidance_logits_is_cached(image_key: str, text: str) -> bool:
+    return os.path.exists(guidance_logits_cache_path(image_key, text))

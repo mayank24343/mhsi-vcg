@@ -191,6 +191,10 @@ def run_full_evaluation(
         all_results[alpha] = {}
 
         for sampling in samplings:
+            torch.cuda.empty_cache()
+            if (sampling != 'adversarial'):
+                continue
+            
             print(f"\n  Sampling strategy: {sampling}")
             questions = question_sets[sampling]
 
