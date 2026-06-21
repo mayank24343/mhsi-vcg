@@ -1,5 +1,5 @@
 # large vision language model used
-LVLM_MODEL_NAME = "HuggingFaceTB/SmolVLM2-2.2B-Instruct" #"Qwen/Qwen2-VL-2B-Instruct"#"HuggingFaceTB/SmolVLM2-2.2B-Instruct" #"openbmb/MiniCPM-V-2"#"llava-hf/llava-1.5-phi-2-hf"#"Qwen/Qwen2-VL-2B-Instruct"
+LVLM_MODEL_NAME = "Qwen/Qwen2-VL-2B-Instruct"#"HuggingFaceTB/SmolVLM2-2.2B-Instruct" #"openbmb/MiniCPM-V-2"#"llava-hf/llava-1.5-phi-2-hf"#"Qwen/Qwen2-VL-2B-Instruct"
 
 # guidance hyperparameters
 ALPHA = 1    # amplification strength
