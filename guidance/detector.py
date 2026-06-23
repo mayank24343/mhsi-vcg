@@ -7,6 +7,7 @@ from transformers import (
 from config import DETR_THRESHOLD, RAM_THRESHOLD, DEVICE
 from ram.models import ram_plus
 from ram import inference_ram, get_transform
+import gc
 
 # neat trick borrowed from marine, labels here have same indices as the return indices given by DETR
 COCO_CLASSES = [
@@ -121,6 +122,11 @@ class ObjectDetector:
         Run both models and return intersection.
         Returns list of class name strings.
         """
+        gc.collect() 
+    
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+            
         detr_classes = self.detect_detr(image)
         # ram_classes = self.detect_ram(image)
 
@@ -133,6 +139,7 @@ class ObjectDetector:
 
         result = list(intersection)
         print(f"[ObjectDetector] Final objects: {result}")
+
         return result
     
     def detect_with_negatives(self, image: Image.Image):

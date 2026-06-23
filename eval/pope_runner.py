@@ -9,6 +9,7 @@ from eval.pope import POPEDataset, POPEQuestion
 from eval.pope_metrics import compute_metrics, POPEMetrics
 from config import DEVICE, MAX_NEW_TOKENS
 import torch
+import gc
 
 
 def extract_yes_no(raw_answer: str) -> str:
@@ -89,6 +90,11 @@ def run_pope_eval(
             "prediction": pred,
             "correct": pred == q.answer
         })
+
+        gc.collect() 
+    
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
 
     # compute metrics
     metrics = compute_metrics(predictions, ground_truths)
@@ -192,6 +198,8 @@ def run_full_evaluation(
 
         for sampling in samplings:
             torch.cuda.empty_cache()
+            if (sampling != 'adversarial'): 
+                continue
             
             print(f"\n  Sampling strategy: {sampling}")
             questions = question_sets[sampling]

@@ -9,7 +9,7 @@ RAM_THRESHOLD = 0.68         # confidence threshold for RAM++
 TOP_SVD_COMPONENTS = 3   # None = keep all, int = keep top-k
 
 # generation
-MAX_NEW_TOKENS = 500
+MAX_NEW_TOKENS = 20
 
 # device
 DEVICE = "cuda"

@@ -305,7 +305,7 @@ class Pipeline1:
             if detected_key in self._memory_cache:
                 detected_objects = self._memory_cache[detected_key]
             else:
-                detected_objects, _ = self.detector.detect_with_negatives(image)
+                detected_objects = self.detector.detect(image)
                 self._memory_cache[detected_key] = detected_objects
 
             self._run_marine_forward(
