@@ -1,0 +1,13 @@
+this is running broken marine on smolvlm
+
+POPE Metrics — alpha_1.0_adversarial_detailed.json
+────────────────────────────────────────
+  Accuracy:  86.70%
+  Precision: 82.95%
+  Recall:    92.38%
+  F1:        87.41%
+  Yes Ratio: 55.68%
+  Total:     1338
+  TP:618  FP:127  TN:542  FN:51
+────────────────────────────────────────
+{'1.0': {'adversarial': {'accuracy': 86.7, 'precision': 82.95, 'recall': 92.38, 'f1': 87.41, 'yes_ratio': 55.68, 'total': 1338, 'tp': 618, 'fp': 127, 'tn': 542, 'fn': 51}}}

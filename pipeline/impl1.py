@@ -10,6 +10,7 @@ from config import DEVICE, MAX_NEW_TOKENS, ALPHA
 import torch.nn.functional as F
 
 
+
 class Pipeline1:
     def __init__(self, model, tokenizer, processor):
         self.model = model

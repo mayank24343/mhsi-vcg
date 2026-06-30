@@ -1,0 +1,13 @@
+this is running broken marine on qwen
+
+POPE Metrics — alpha_1.0_adversarial_detailed.json
+────────────────────────────────────────
+  Accuracy:  88.71%
+  Precision: 89.72%
+  Recall:    87.44%
+  F1:        88.57%
+  Yes Ratio: 48.73%
+  Total:     1338
+  TP:585  FP:67  TN:602  FN:84
+────────────────────────────────────────
+{'1.0': {'adversarial': {'accuracy': 88.71, 'precision': 89.72, 'recall': 87.44, 'f1': 88.57, 'yes_ratio': 48.73, 'total': 1338, 'tp': 585, 'fp': 67, 'tn': 602, 'fn': 84}}}

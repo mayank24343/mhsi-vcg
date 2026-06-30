@@ -5,11 +5,12 @@ from pipeline.impl2 import Pipeline2
 from eval.pope_runner import run_full_evaluation
 from config import LVLM_MODEL_NAME
 import torch
+from pipeline.impl3 import Pipeline3
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--impl", type=int, default=1, choices=[1, 2])
+    parser.add_argument("--impl", type=int, default=1, choices=[1, 2, 3])
     parser.add_argument("--annotation_file", type=str, required=True,
                         help="Path to COCO instances_val2014.json")
     parser.add_argument("--image_dir", type=str, required=True,
@@ -31,7 +32,7 @@ def main():
     # load model once — reused across all alpha values
     model, tokenizer, processor = load_model(LVLM_MODEL_NAME)
 
-    pipeline_class = Pipeline1 if args.impl == 1 else Pipeline2
+    pipeline_class = Pipeline1 if args.impl == 1 else Pipeline3
     impl_name = f"impl{args.impl}"
 
     run_full_evaluation(

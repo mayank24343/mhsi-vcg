@@ -27,11 +27,10 @@ def extract_yes_no(raw_answer: str) -> str:
     # check if yes/no appears anywhere
     if "yes" in answer:
         return "yes"
-    if "no" in answer:
+    if "no" in answer or "not" in answer:
         return "no"
 
-    # default — treat as no (conservative)
-    return "no"
+    return "yes"
 
 
 def run_pope_eval(
@@ -233,6 +232,9 @@ def _save_summary(all_results, alphas, samplings, save_dir, impl_name):
     for alpha in alphas:
         summary[str(alpha)] = {}
         for sampling in samplings:
+            if (sampling != 'adversarial'):
+                continue
+            
             m = all_results[alpha][sampling]
             summary[str(alpha)][sampling] = {
                 "accuracy":  round(m.accuracy, 2),

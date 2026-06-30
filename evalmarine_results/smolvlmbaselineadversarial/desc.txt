@@ -1,0 +1,1 @@
+smolvlm baseline for the given pope evalS

@@ -1,0 +1,12 @@
+{
+  "1.0": {
+    "adversarial": {
+      "accuracy": 81.32,
+      "precision": 98.83,
+      "recall": 63.38,
+      "f1": 77.23,
+      "yes_ratio": 32.06,
+      "total": 1338
+    }
+  }
+}
